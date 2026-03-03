@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3E80QK25GB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3E80QK25GB');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary Suite | CLI, API, MCP, 그리고 데스크톱 사전 앱</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page page-index">
+      <nav class="language-switch" aria-label="Language selector">
+        <div class="contact-links">
+          <a href="https://runable.app/contact.html">✉️ 문의하기</a>
+          <a href="report-issues.html" data-page-link="report-issues"
+            >🛠️ 문제 신고</a
+          >
+        </div>
+        <div class="lang-picker">
+          <span class="lang-icon" aria-hidden="true">🌐</span>
+          <label class="sr-only" for="lang-select-index-ko">언어 선택</label>
+          <select id="lang-select-index-ko" data-lang-picker>
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="id">🇮🇩 Bahasa Indonesia</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="eo">🏳️ Esperanto</option>
+          </select>
+        </div>
+      </nav>
+
+      <header class="hero no-scan hunmin-bg tagline-compact">
+        <div class="hero-inner">
+          <div class="title-pattern-band" aria-hidden="true"></div>
+          <p class="top-hangul-title">한국어를 위한 사전</p>
+          <p class="top-hangul-subtitle">
+            영어·일본어·한자까지 아우르는 한글 사전
+          </p>
+          <img
+            class="hero-top-image"
+            src="images/hangul-dictionary-tp.webp"
+            alt="한글 사전 배너 이미지"
+          />
+          <p class="eyebrow">사전 플랫폼</p>
+          <h1>
+            개발자와 사용자를 위한
+            <span class="hero-accent">강력한 사전 도구</span>
+          </h1>
+          <p class="subtitle">
+            <br />
+            ⚡ <code>CLI 앱</code>으로 빠른 터미널 검색, REST API 연동, MCP 기반
+            워크플로를 사용하세요.
+            <br />
+            🖥️ <code>사전 데스크톱 앱</code>에서 다양한 사전을 탐색하고, 편한
+            화면으로 단어/뜻을 빠르게 확인하세요.
+          </p>
+          <ul class="hero-badges">
+            <li>CLI + REST API + MCP</li>
+            <li>데스크톱 사전 탐색</li>
+            <li>하나의 스위트, 두 가지 강력한 경험</li>
+          </ul>
+          <p class="dict-offer-title">제공 사전</p>
+          <ul class="dict-offer-list">
+            <li>한국어→영어</li>
+            <li>영어→한국어</li>
+            <li>한국어→일본어</li>
+            <li>일본어→한국어</li>
+            <li>한국어→중국어</li>
+            <li>중국어→한국어</li>
+            <li>한국어→인도네시아어</li>
+            <li>인도네시아어→한국어</li>
+            <li>한자↔한국어</li>
+            <li>국어사전/전문용어 사전</li>
+          </ul>
+          <p class="dict-offer-title">지원 UI 언어</p>
+          <ul class="dict-offer-list">
+            <li>🇰🇷 한국어 (ko)</li>
+            <li>🇺🇸 영어 (en)</li>
+            <li>🇯🇵 일본어 (ja)</li>
+            <li>🇨🇳 중국어 (zh)</li>
+            <li>🇮🇩 인도네시아어 (id)</li>
+            <li>🇪🇸 스페인어 (es)</li>
+            <li>🏳️ 에스페란토 (eo)</li>
+          </ul>
+          <p class="hero-download-title">🢃 앱 다운 받기</p>
+          <div class="hero-download-links">
+            <a href="download-cli.html" data-page-link="download-cli"
+              >명령어 프로그램(CLI) 받기</a
+            >
+            <a href="download-desktop.html" data-page-link="download-desktop"
+              >데스크톱 프로그램 받기</a
+            >
+          </div>
+          <div class="signal-band" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <h2 class="section-title">🔒 개인정보 보호와 로컬 우선!</h2>
+      <section class="products">
+        <article class="card">
+          <ul class="feature-list">
+            <li>
+              <strong>💻 로컬 우선:</strong> 모든 기능은 사용자의 컴퓨터
+              안에서만 동작하며, 새 사전 데이터를 받을 때만 GitHub 서버에서
+              다운로드합니다.
+            </li>
+            <li>
+              <strong>🛡️ 개인정보 우선:</strong> 사용 기록은 절대 기록하거나
+              추적하지 않으며, 어떤 사용 데이터도 서버로 업로드하지 않습니다.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <h2 class="section-title">원하는 방식 선택</h2>
+      <section class="products">
+        <article class="card workflow-card">
+          <h2><code>dict-cli</code></h2>
+          <p>
+            개발 및 자동화 워크플로를 위한 도구입니다. 터미널에서 사전 결과를
+            빠르게 조회하고, REST API로 외부 서비스에 제공하며, MCP 지원 도구와
+            연결할 수 있습니다.
+          </p>
+          <ul class="feature-list">
+            <li>명령어 기반의 빠른 단어 검색</li>
+            <li>앱/서비스 연동을 위한 내장 REST API</li>
+            <li>AI 및 도구 연동을 위한 MCP 기능</li>
+            <li>스크립트, 파이프라인, 로컬 도구에 적합</li>
+          </ul>
+          <br />
+          <div class="doc-link-row">
+            <p class="doc-link">
+              <a href="dict-cli.html" data-page-link="dict-cli"
+                >dict-cli 전체 매뉴얼 보기 →</a
+              >
+            </p>
+
+            <p class="doc-link">
+              <a href="download-cli.html" data-page-link="download-cli"
+                >dict-cli 다운로드 페이지 →</a
+              >
+            </p>
+          </div>
+        </article>
+
+        <article class="card workflow-card">
+          <h2><code>dictionary</code> 데스크톱 앱</h2>
+          <p>
+            데스크톱 환경에서 사전을 편하게 탐색하기 위한 앱입니다. 단어/뜻
+            조회와 사전 간 탐색을 UI 기반으로 쉽게 수행할 수 있습니다.
+          </p>
+          <ul class="feature-list">
+            <li>데스크톱 UI 기반 단어/뜻 조회</li>
+            <li>다양한 사전 소스 탐색</li>
+            <li>직관적인 로컬 사전 사용 경험</li>
+          </ul>
+          <p class="doc-link card-link-bottom">
+            <a href="download-desktop.html" data-page-link="download-desktop"
+              >데스크톱 앱 다운로드 페이지 →</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <h2 class="section-title section-title-gallery">앱 화면 미리보기</h2>
+      <section class="art-gallery">
+        <article class="art-card">
+          <div
+            class="image-slider"
+            data-slider-images="images/screenshot-dictionary-desktop-1.webp|images/screenshot-dictionary-desktop-2.webp|images/screenshot-dictionary-desktop-settings.webp|images/screenshot-dictionary-desktop-japanese.webp|images/screenshot-dictionary-desktop-chinese.webp"
+          >
+            <button
+              type="button"
+              class="slider-arrow slider-arrow-left"
+              aria-label="Previous screenshot"
+            >
+              &#10094;
+            </button>
+            <img
+              class="slider-image"
+              src="images/screenshot-dictionary-desktop-1.webp"
+              alt="Desktop dictionary screenshot"
+            />
+            <button
+              type="button"
+              class="slider-arrow slider-arrow-right"
+              aria-label="Next screenshot"
+            >
+              &#10095;
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <h2 class="section-title">🇰🇷 사전 프로젝트 후원하기</h2>
+      <section class="products">
+        <article class="card">
+          <p>한 번에 한 단어씩, 여러분의 언어 학습을 돕고 있습니다.</p>
+          <ul class="feature-list">
+            <li>
+              <strong>🚀 지속적인 개발:</strong> 새로운 기능 추가와 검색 경험
+              개선에 사용됩니다.
+            </li>
+            <li>
+              <strong>🛡️ 개인정보 보호:</strong> 로컬 우선 구조를 유지해
+              데이터가 온라인으로 새지 않도록 지킵니다.
+            </li>
+            <li>
+              <strong>🎯 광고 없는 학습:</strong> 앱을
+              <strong>100% 광고 없이</strong> 유지해 학습에만 집중할 수 있게
+              돕습니다.
+            </li>
+          </ul>
+          <br />
+          <p>
+            여러분의 후원은 개발 비용을 충당하고, 프로젝트를 꾸준히 이어갈 수
+            있는 큰 힘이 됩니다.
+          </p>
+          <br />
+          <p class="license-note">
+            <strong>📄 라이선스 안내:</strong> 아래에서 한국어 라이선스 전문을
+            확인하실 수 있습니다.
+          </p>
+          <div class="license-embed">
+            <iframe
+              class="license-frame"
+              src="license/LICENSE.ko.txt"
+              title="한국어 라이선스 전문"
+            ></iframe>
+          </div>
+          <br />
+          <p class="doc-link donation-cta">
+            <a
+              href="https://buy.polar.sh/polar_cl_mla4zKoMsHFpJY23MlIRhZJyDu2sPYSYSvXSn4O0iTm"
+              target="_blank"
+              rel="noopener noreferrer"
+              >💝 후원하기</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <section class="brand-footer" aria-label="copyright">
+        <hr />
+        <img
+          src="images/runable-thankyou-midsize.webp"
+          alt="Runnable.app thank you artwork"
+        />
+        <p>
+          © 2026
+          <a
+            href="https://runable.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Runnable.app</a
+          >. All rights reserved.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

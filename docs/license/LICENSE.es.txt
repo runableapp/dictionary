@@ -1,0 +1,26 @@
+Licencia Donationware y Aviso de Copyright
+Copyright © 2026 Runable.app. Todos los derechos reservados.
+
+Este software se distribuye como Donationware. No es de dominio publico y no es de codigo abierto.
+
+1. Concesion de Licencia
+Se concede permiso a cualquier persona que obtenga una copia de este software para usarlo tanto con fines personales como comerciales, sin limite de tiempo y de forma gratuita.
+
+2. Apoyo al Proyecto
+Aunque este software es gratuito, su desarrollo y mantenimiento continuos dependen de la generosidad de sus usuarios. Si esta herramienta de diccionario te resulta util, considera hacer una donacion. Tu apoyo ayuda a mantener el proyecto activo y sin anuncios.
+
+Dona aqui: https://buy.polar.sh/polar_cl_mla4zKoMsHFpJY23MlIRhZJyDu2sPYSYSvXSn4O0iTm
+
+3. Distribucion
+Se concede permiso para copiar y redistribuir este software, siempre que se distribuya unicamente en su forma original, sin modificaciones, incluyendo este aviso de licencia, y que no se cobre ninguna tarifa por su distribucion.
+
+4. Restricciones
+La modificacion, ingenieria inversa, descompilacion o redistribucion de versiones modificadas esta estrictamente prohibida sin permiso previo por escrito del titular de los derechos de autor.
+
+5. Exclusion de Garantia
+Este software se proporciona "tal cual", sin garantia de ningun tipo, expresa o implicita, incluidas, entre otras, las garantias de comerciabilidad, idoneidad para un proposito particular y no infraccion.
+
+6. Limitacion de Responsabilidad
+En ningun caso el titular de los derechos de autor sera responsable de reclamacion, dano u otra responsabilidad, ya sea en una accion contractual, extracontractual o de otro tipo, que surja de, o en conexion con, el software o el uso u otras operaciones con el software.
+
+Este aviso de copyright se aplica en todo el mundo.

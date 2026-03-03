@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3E80QK25GB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3E80QK25GB');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary Suite | CLI、API、MCP、デスクトップ辞書</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page page-index">
+      <nav class="language-switch" aria-label="Language selector">
+        <div class="contact-links">
+          <a href="https://runable.app/contact.html">✉️ お問い合わせ</a>
+          <a href="report-issues.ja.html" data-page-link="report-issues"
+            >🛠️ 問題を報告</a
+          >
+        </div>
+        <div class="lang-picker">
+          <span class="lang-icon" aria-hidden="true">🌐</span>
+          <label class="sr-only" for="lang-select-index-ja">言語を選択</label>
+          <select id="lang-select-index-ja" data-lang-picker>
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="id">🇮🇩 Bahasa Indonesia</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="eo">🏳️ Esperanto</option>
+          </select>
+        </div>
+      </nav>
+
+      <header class="hero no-scan hunmin-bg tagline-compact">
+        <div class="hero-inner">
+          <div class="title-pattern-band" aria-hidden="true"></div>
+          <p class="top-hangul-title">ハングル辞書</p>
+          <p class="top-hangul-subtitle">
+            英語・日本語・漢字まで対応する韓国語辞書
+          </p>
+          <img
+            class="hero-top-image"
+            src="images/hangul-dictionary-tp.webp"
+            alt="ハングル辞書バナー画像"
+          />
+          <p class="eyebrow">辞書プラットフォーム</p>
+          <h1>
+            開発者とユーザーのための
+            <span class="hero-accent">強力な辞書ツール</span>
+          </h1>
+          <p class="subtitle">
+            <code>dict-cli</code> で高速なターミナル検索、REST API 連携、MCP
+            ワークフローを利用できます。
+            <br />
+            <code>dictionary</code>
+            デスクトップアプリで複数辞書を快適に検索できます。
+          </p>
+          <ul class="hero-badges">
+            <li>CLI + REST API + MCP</li>
+            <li>デスクトップ辞書ブラウズ</li>
+            <li>1つのスイートで2つの体験</li>
+          </ul>
+          <p class="dict-offer-title">対応辞書</p>
+          <ul class="dict-offer-list">
+            <li>韓国語→英語</li>
+            <li>英語→韓国語</li>
+            <li>韓国語→日本語</li>
+            <li>日本語→韓国語</li>
+            <li>韓国語→漢字</li>
+            <li>漢字→韓国語</li>
+            <li>韓国語→インドネシア語</li>
+            <li>インドネシア語→韓国語</li>
+            <li>漢字↔韓国語</li>
+            <li>国語辞典 / 専門用語辞典</li>
+          </ul>
+          <p class="dict-offer-title">対応 UI 言語</p>
+          <ul class="dict-offer-list">
+            <li>🇰🇷 韓国語 (ko)</li>
+            <li>🇺🇸 英語 (en)</li>
+            <li>🇯🇵 日本語 (ja)</li>
+            <li>🇨🇳 中国語 (zh)</li>
+            <li>🇮🇩 インドネシア語 (id)</li>
+            <li>🇪🇸 スペイン語 (es)</li>
+            <li>🏳️ エスペラント (eo)</li>
+          </ul>
+          <p class="hero-download-title">🢃 アプリをダウンロード</p>
+          <div class="hero-download-links">
+            <a href="download-cli.ja.html" data-page-link="download-cli"
+              >CLIプログラムをダウンロード</a
+            >
+            <a href="download-desktop.ja.html" data-page-link="download-desktop"
+              >デスクトッププログラムをダウンロード</a
+            >
+          </div>
+          <div class="signal-band" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <h2 class="section-title">🔒 プライバシーとローカルファースト</h2>
+      <section class="products">
+        <article class="card">
+          <ul class="feature-list">
+            <li>
+              <strong>💻 ローカルファースト:</strong>
+              すべての機能はユーザーのPC内で動作し、新しい辞書データ取得時のみ
+              GitHub サーバーへ接続します。
+            </li>
+            <li>
+              <strong>🛡️ プライバシーファースト:</strong>
+              利用履歴を記録・追跡せず、利用データをサーバーへアップロードしません。
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <h2 class="section-title">使い方を選ぶ</h2>
+      <section class="products">
+        <article class="card workflow-card">
+          <h2><code>dict-cli</code></h2>
+          <p>
+            開発・自動化向けの CLI
+            ツールです。辞書結果をターミナルで取得し、REST API と MCP
+            で外部ツール連携ができます。
+          </p>
+          <ul class="feature-list">
+            <li>コマンドベースの高速検索</li>
+            <li>アプリ連携向け内蔵 REST API</li>
+            <li>AI / ツール連携向け MCP 機能</li>
+            <li>スクリプトやパイプラインに最適</li>
+          </ul>
+          <br />
+          <div class="doc-link-row">
+            <p class="doc-link">
+              <a href="dict-cli.ja.html" data-page-link="dict-cli"
+                >dict-cli マニュアルを見る →</a
+              >
+            </p>
+
+            <p class="doc-link">
+              <a href="download-cli.ja.html" data-page-link="download-cli"
+                >dict-cli ダウンロードページ →</a
+              >
+            </p>
+          </div>
+        </article>
+
+        <article class="card workflow-card">
+          <h2><code>dictionary</code> デスクトップアプリ</h2>
+          <p>
+            デスクトップで辞書を快適に使うためのアプリです。単語・意味検索や辞書間の比較をシンプルな
+            UI で行えます。
+          </p>
+          <ul class="feature-list">
+            <li>デスクトップ UI で素早く検索</li>
+            <li>複数辞書ソースを横断</li>
+            <li>直感的なローカル辞書体験</li>
+          </ul>
+          <p class="doc-link card-link-bottom">
+            <a href="download-desktop.ja.html" data-page-link="download-desktop"
+              >デスクトップアプリ ダウンロードページ →</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <h2 class="section-title section-title-gallery">アプリ画面プレビュー</h2>
+      <section class="art-gallery">
+        <article class="art-card">
+          <div
+            class="image-slider"
+            data-slider-images="images/screenshot-dictionary-desktop-1.webp|images/screenshot-dictionary-desktop-2.webp|images/screenshot-dictionary-desktop-settings.webp|images/screenshot-dictionary-desktop-japanese.webp|images/screenshot-dictionary-desktop-chinese.webp"
+          >
+            <button
+              type="button"
+              class="slider-arrow slider-arrow-left"
+              aria-label="Previous screenshot"
+            >
+              &#10094;
+            </button>
+            <img
+              class="slider-image"
+              src="images/screenshot-dictionary-desktop-1.webp"
+              alt="Desktop dictionary screenshot"
+            />
+            <button
+              type="button"
+              class="slider-arrow slider-arrow-right"
+              aria-label="Next screenshot"
+            >
+              &#10095;
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <h2 class="section-title">🇯🇵 辞書プロジェクトを支援する</h2>
+      <section class="products">
+        <article class="card">
+          <p>📚 一度に一つの単語、あなたの語学学習をサポートします。</p>
+          <ul class="feature-list">
+            <li>
+              <strong>🚀 継続的な開発:</strong>
+              新機能の追加と検索体験の改善に活用されます。
+            </li>
+            <li>
+              <strong>🛡️ プライバシー重視:</strong>
+              ローカルファーストを維持し、データのオンライン流出を防ぎます。
+            </li>
+            <li>
+              <strong>🎯 集中できる環境:</strong> アプリを
+              <strong>100% 広告なし</strong> で維持するために役立ちます。
+            </li>
+          </ul>
+          <br />
+          <p>
+            💝 ご寄付は開発コストを支え、プロジェクト継続の大きな力になります。
+          </p>
+          <br />
+          <p class="license-note">
+            <strong>📄 ライセンス:</strong>
+            以下で日本語版ライセンス全文を確認できます。
+          </p>
+          <div class="license-embed">
+            <iframe
+              class="license-frame"
+              src="license/LICENSE.ja.txt"
+              title="日本語ライセンス全文"
+            ></iframe>
+          </div>
+          <br />
+          <p class="doc-link donation-cta">
+            <a
+              href="https://buy.polar.sh/polar_cl_mla4zKoMsHFpJY23MlIRhZJyDu2sPYSYSvXSn4O0iTm"
+              target="_blank"
+              rel="noopener noreferrer"
+              >💝 寄付する</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <section class="brand-footer" aria-label="copyright">
+        <hr />
+        <img
+          src="images/runable-thankyou-midsize.webp"
+          alt="Runnable.app thank you artwork"
+        />
+        <p>
+          © 2026
+          <a
+            href="https://runable.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Runnable.app</a
+          >. All rights reserved.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

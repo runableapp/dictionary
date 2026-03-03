@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3E80QK25GB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3E80QK25GB');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary Suite | CLI、API、MCP 与桌面词典</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page page-index">
+      <nav class="language-switch" aria-label="Language selector">
+        <div class="contact-links">
+          <a href="https://runable.app/contact.html">✉️ 联系我们</a>
+          <a href="report-issues.zh.html" data-page-link="report-issues"
+            >🛠️ 问题反馈</a
+          >
+        </div>
+        <div class="lang-picker">
+          <span class="lang-icon" aria-hidden="true">🌐</span>
+          <label class="sr-only" for="lang-select-index-zh">选择语言</label>
+          <select id="lang-select-index-zh" data-lang-picker>
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="id">🇮🇩 Bahasa Indonesia</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="eo">🏳️ Esperanto</option>
+          </select>
+        </div>
+      </nav>
+
+      <header class="hero no-scan hunmin-bg tagline-compact">
+        <div class="hero-inner">
+          <div class="title-pattern-band" aria-hidden="true"></div>
+          <p class="top-hangul-title">韩语词典</p>
+          <p class="top-hangul-subtitle">覆盖英语、日语、汉字的韩文词典</p>
+          <img
+            class="hero-top-image"
+            src="images/hangul-dictionary-tp.webp"
+            alt="韩语词典横幅图片"
+          />
+          <p class="eyebrow">词典平台</p>
+          <h1>
+            面向开发者与用户的 <span class="hero-accent">强大词典工具</span>
+          </h1>
+          <p class="subtitle">
+            使用 <code>dict-cli</code> 在终端快速查询，并通过 REST API 与 MCP
+            集成。
+            <br />
+            使用 <code>dictionary</code> 桌面应用轻松浏览多种词典。
+          </p>
+          <ul class="hero-badges">
+            <li>CLI + REST API + MCP</li>
+            <li>桌面词典浏览</li>
+            <li>一个套件，两种强大体验</li>
+          </ul>
+          <p class="dict-offer-title">可用词典</p>
+          <ul class="dict-offer-list">
+            <li>韩语→英语</li>
+            <li>英语→韩语</li>
+            <li>韩语→日语</li>
+            <li>日语→韩语</li>
+            <li>韩语→汉字</li>
+            <li>汉字→韩语</li>
+            <li>韩语→印尼语</li>
+            <li>印尼语→韩语</li>
+            <li>汉字↔韩语</li>
+            <li>韩语词典/专业词典</li>
+          </ul>
+          <p class="dict-offer-title">支持的界面语言</p>
+          <ul class="dict-offer-list">
+            <li>🇰🇷 韩语 (ko)</li>
+            <li>🇺🇸 英语 (en)</li>
+            <li>🇯🇵 日语 (ja)</li>
+            <li>🇨🇳 中文 (zh)</li>
+            <li>🇮🇩 印尼语 (id)</li>
+            <li>🇪🇸 西班牙语 (es)</li>
+            <li>🏳️ 世界语 (eo)</li>
+          </ul>
+          <p class="hero-download-title">🢃 下载应用</p>
+          <div class="hero-download-links">
+            <a href="download-cli.zh.html" data-page-link="download-cli"
+              >下载命令行程序 (CLI)</a
+            >
+            <a href="download-desktop.zh.html" data-page-link="download-desktop"
+              >下载桌面程序</a
+            >
+          </div>
+          <div class="signal-band" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <h2 class="section-title">🔒 隐私优先与本地优先</h2>
+      <section class="products">
+        <article class="card">
+          <ul class="feature-list">
+            <li>
+              <strong>💻 本地优先：</strong
+              >所有功能仅在用户电脑本地运行，只有下载新词典数据时才会连接 GitHub
+              服务器。
+            </li>
+            <li>
+              <strong>🛡️ 隐私优先：</strong
+              >不会记录或追踪使用记录，任何使用数据都不会上传到服务器。
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <h2 class="section-title">选择你的工作方式</h2>
+      <section class="products">
+        <article class="card workflow-card">
+          <h2><code>dict-cli</code></h2>
+          <p>
+            面向开发和自动化。可在终端查询词典结果，并通过 REST API 与 MCP
+            连接外部工具。
+          </p>
+          <ul class="feature-list">
+            <li>命令行快速查词</li>
+            <li>内置 REST API</li>
+            <li>MCP 工具集成</li>
+            <li>适用于脚本与流水线</li>
+          </ul>
+          <br />
+          <div class="doc-link-row">
+            <p class="doc-link">
+              <a href="dict-cli.zh.html" data-page-link="dict-cli"
+                >查看 dict-cli 完整手册 →</a
+              >
+            </p>
+
+            <p class="doc-link">
+              <a href="download-cli.zh.html" data-page-link="download-cli"
+                >查看 dict-cli 下载页面 →</a
+              >
+            </p>
+          </div>
+        </article>
+        <article class="card workflow-card">
+          <h2><code>dictionary</code> 桌面应用</h2>
+          <p>用于桌面端舒适地浏览词典，支持词条查询、结果对比与多词典探索。</p>
+          <ul class="feature-list">
+            <li>桌面 UI 快速查词</li>
+            <li>浏览多词典来源</li>
+            <li>本地化词典体验</li>
+          </ul>
+          <p class="doc-link card-link-bottom">
+            <a href="download-desktop.zh.html" data-page-link="download-desktop"
+              >查看桌面应用下载页面 →</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <h2 class="section-title section-title-gallery">应用界面预览</h2>
+      <section class="art-gallery">
+        <article class="art-card">
+          <div
+            class="image-slider"
+            data-slider-images="images/screenshot-dictionary-desktop-1.webp|images/screenshot-dictionary-desktop-2.webp|images/screenshot-dictionary-desktop-settings.webp|images/screenshot-dictionary-desktop-japanese.webp|images/screenshot-dictionary-desktop-chinese.webp"
+          >
+            <button
+              type="button"
+              class="slider-arrow slider-arrow-left"
+              aria-label="Previous screenshot"
+            >
+              &#10094;
+            </button>
+            <img
+              class="slider-image"
+              src="images/screenshot-dictionary-desktop-1.webp"
+              alt="Desktop dictionary screenshot"
+            />
+            <button
+              type="button"
+              class="slider-arrow slider-arrow-right"
+              aria-label="Next screenshot"
+            >
+              &#10095;
+            </button>
+          </div>
+        </article>
+      </section>
+      <h2 class="section-title">🇨🇳 支持词典项目</h2>
+      <section class="products">
+        <article class="card">
+          <p>📚 一次一个词，助您攻克语言学习。</p>
+          <ul class="feature-list">
+            <li>
+              <strong>🚀 持续开发：</strong>用于新增功能并持续优化搜索体验。
+            </li>
+            <li>
+              <strong>🛡️ 隐私优先：</strong
+              >保持本地优先架构，确保您的数据不泄露到网上。
+            </li>
+            <li>
+              <strong>🎯 无干扰学习：</strong>帮助应用保持
+              <strong>100% 无广告</strong>，让您专注于语言本身。
+            </li>
+          </ul>
+          <br />
+          <p>💝 您的捐赠将帮助覆盖开发成本，并支持项目长期稳定推进。</p>
+          <br />
+          <p class="license-note">
+            <strong>📄 许可证：</strong>您可以在下方查看中文版许可证全文。
+          </p>
+          <div class="license-embed">
+            <iframe
+              class="license-frame"
+              src="license/LICENSE.zh.txt"
+              title="中文版许可证全文"
+            ></iframe>
+          </div>
+          <br />
+          <p class="doc-link donation-cta">
+            <a
+              href="https://buy.polar.sh/polar_cl_mla4zKoMsHFpJY23MlIRhZJyDu2sPYSYSvXSn4O0iTm"
+              target="_blank"
+              rel="noopener noreferrer"
+              >💝 立即捐赠</a
+            >
+          </p>
+        </article>
+      </section>
+      <section class="brand-footer" aria-label="copyright">
+        <hr />
+        <img
+          src="images/runable-thankyou-midsize.webp"
+          alt="Runnable.app thank you artwork"
+        />
+        <p>
+          © 2026
+          <a
+            href="https://runable.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Runnable.app</a
+          >. All rights reserved.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

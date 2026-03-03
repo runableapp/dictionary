@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3E80QK25GB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3E80QK25GB');
+</script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>문제 신고 | 한글사전</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <nav class="issue-top-nav" aria-label="페이지 상단 메뉴">
+      <a href="index.html" data-page-link="index">← 메인 페이지로 돌아가기</a>
+      <div class="lang-picker">
+        <span class="lang-icon" aria-hidden="true">🌐</span>
+        <label class="sr-only" for="lang-select-report-ko">언어 선택</label>
+        <select id="lang-select-report-ko" data-lang-picker>
+          <option value="ko">🇰🇷 한국어</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="ja">🇯🇵 日本語</option>
+          <option value="zh">🇨🇳 中文</option>
+          <option value="id">🇮🇩 Bahasa Indonesia</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="eo">🏳️ Esperanto</option>
+        </select>
+      </div>
+    </nav>
+
+    <header class="hero no-scan hunmin-bg tagline-compact">
+      <div class="hero-inner">
+        <div class="title-pattern-band" aria-hidden="true"></div>
+        <p class="top-hangul-title">한국어를 위한 사전</p>
+        <p class="top-hangul-subtitle">영어·일본어·한자까지 아우르는 한글 사전</p>
+        <img class="hero-top-image" src="images/hangul-dictionary-tp.webp" alt="한글 사전 배너 이미지" />
+        <p class="eyebrow">문제 신고</p>
+        <h1>
+          버그, 오류, 개선 요청을
+          <span class="hero-accent">편하게 알려주세요</span>
+        </h1>
+        <p class="subtitle">
+          동작 중 불편했던 점이나 개선 아이디어가 있다면 아래 안내를 확인한 뒤
+          Google Form으로 신고 양식을 작성해 주세요.
+        </p>
+        <div class="signal-band" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <section class="issue-grid">
+      <article class="issue-card">
+        <h3>신고 전 안내</h3>
+        <ul>
+          <li>문제가 발생한 상황을 순서대로 간단히 정리해 주세요.</li>
+          <li>기대한 결과와 실제 결과를 함께 적어 주세요.</li>
+          <li>항상 발생하는지, 가끔 발생하는지 재현 빈도를 알려 주세요.</li>
+          <li>사용 환경(운영체제, 브라우저/앱 버전 등)을 적어 주세요.</li>
+          <li>개인정보, 민감정보는 제외하고 작성해 주세요.</li>
+        </ul>
+      </article>
+
+      <article class="issue-card">
+        <h3>신고 양식</h3>
+        <p>아래 임베드된 Google Form에서 버그/개선 요청/피드백을 제출해 주세요.</p>
+        <div class="google-form-wrap">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScCyyFzF9_UOQHIJpI6peLH8AeyIEFGhzGSwcMoB4ci3nu6Hg/viewform?embedded=true" width="640" height="1008" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+      </article>
+    </section>
+
+    <section class="brand-footer" aria-label="copyright">
+      <hr />
+      <img src="images/runable-thankyou-midsize.webp" alt="Runnable.app thank you artwork" />
+      <p>
+        © 2026 <a href="https://runable.app" target="_blank" rel="noopener noreferrer">Runnable.app</a>.
+        All rights reserved.
+      </p>
+    </section>
+  </div>
+</body>
+</html>

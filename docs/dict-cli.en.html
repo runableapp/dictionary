@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3E80QK25GB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3E80QK25GB');
+</script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dict-cli Manual | Dictionary Suite</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <style>
+    .top-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .top-links a {
+      text-decoration: none;
+      font-size: 0.92rem;
+      color: #fff2cd;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.09);
+      padding: 7px 11px;
+      border-radius: 999px;
+      transition: transform 120ms ease, background-color 120ms ease;
+    }
+
+    .top-links a:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .manual-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .manual-card {
+      border: 1px solid var(--line);
+      background: #fcf8f5;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      color: #1d3152;
+    }
+
+    .manual-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #1f3f74;
+    }
+
+    .manual-card p,
+    .manual-card li {
+      color: #324a6e;
+      line-height: 1.6;
+    }
+
+    .manual-card ul,
+    .manual-card ol {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    .manual-card code {
+      color: #1f4f96;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.94em;
+    }
+
+    .manual-card pre {
+      margin: 12px 0 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(32, 74, 136, 0.18);
+      background: #f3f8ff;
+      overflow-x: auto;
+    }
+
+    .download-box {
+      margin-top: 18px;
+      border: 1px dashed rgba(32, 74, 136, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      color: #2f4568;
+      background: #fcf8f5;
+    }
+
+    .download-box a {
+      color: #1f4f96;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="top-links" aria-label="Page navigation">
+      <a href="index.en.html" data-page-link="index">← Back to main page</a>
+      <a href="#" onclick="return false;">Download dict-cli (coming soon)</a>
+      <div class="lang-picker">
+        <span class="lang-icon" aria-hidden="true">🌐</span>
+        <label class="sr-only" for="lang-select-cli-en">Select language</label>
+        <select id="lang-select-cli-en" data-lang-picker>
+          <option value="ko">🇰🇷 한국어</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="ja">🇯🇵 日本語</option>
+          <option value="zh">🇨🇳 中文</option>
+          <option value="id">🇮🇩 Bahasa Indonesia</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="eo">🏳️ Esperanto</option>
+        </select>
+      </div>
+    </nav>
+    <div class="title-pattern-band" aria-hidden="true"></div>
+    <p class="top-hangul-title">한글사전 (Korean Dictionary)</p>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">CLI Manual</p>
+        <h1>
+          <code>dict-cli</code>
+          <span class="hero-accent">Complete User Manual</span>
+        </h1>
+        <p class="subtitle">
+          An offline SQLite dictionary CLI with two optional runtime modes:
+          REST API server (<code>serve</code>) and MCP stdio server (<code>mcp</code>).
+          This page provides full usage guidance in one place.
+        </p>
+        <ul class="hero-badges">
+          <li>Offline dictionary lookup</li>
+          <li>REST API serving mode</li>
+          <li>MCP tooling integration</li>
+        </ul>
+        <div class="signal-band" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <p class="letters">D I C T - C L I &nbsp; M A N U A L</p>
+
+    <section class="manual-grid">
+      <article class="manual-card">
+        <h3>1) Features</h3>
+        <ul>
+          <li>SQLite DB file/directory based dictionary queries</li>
+          <li>Search commands: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li>
+          <li>Runtime modes: local CLI / HTTP REST API / MCP (stdio)</li>
+        </ul>
+      </article>
+
+      <article class="manual-card">
+        <h3>2) Requirements</h3>
+        <ul>
+          <li>Go <code>1.25+</code></li>
+          <li>A dictionary DB path (built separately)</li>
+          <li>Unified DB file: <code>/path/to/dictionary_fts5.db</code></li>
+          <li>Or per-dictionary DB directory: <code>/path/to/dicts</code></li>
+        </ul>
+      </article>
+
+      <article class="manual-card">
+        <h3>3) Build (Taskfile, static linking)</h3>
+        <p>From the <code>dictionary-cli-app</code> directory:</p>
+        <pre><code>./build.sh</code></pre>
+        <p><code>build.sh</code> invokes the Taskfile <code>build</code> target:</p>
+        <pre><code>task build</code></pre>
+        <p>Build command (static-link friendly):</p>
+        <pre><code>CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o bin/dictcli ./cmd/dictcli</code></pre>
+        <p>Optional check on Linux:</p>
+        <pre><code>ldd ./bin/dictcli</code></pre>
+        <p>If output includes <code>not a dynamic executable</code>, it is statically linked.</p>
+      </article>
+
+      <article class="manual-card">
+        <h3>4) Test</h3>
+        <p>Validate CLI behavior against DB files under <code>dictionary-data/dicts</code>:</p>
+        <pre><code>./test.sh</code></pre>
+        <p><code>test.sh</code> runs:</p>
+        <ul>
+          <li>smoke test via <code>scripts/demo_cli_usage.sh</code></li>
+          <li>sanity checks for every <code>dicts/*.db</code> using <code>groups</code></li>
+        </ul>
+      </article>
+
+      <article class="manual-card">
+        <h3>5) CLI Run Examples</h3>
+        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group en-ko prefix --term dict
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en meaning --query dictionary</code></pre>
+        <p>Output modes:</p>
+        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output rich
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output plain
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output md
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output json
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output xml</code></pre>
+      </article>
+
+      <article class="manual-card">
+        <h3>6) Configuration</h3>
+        <p>The config file is optional (see <code>config.example.ini</code>).</p>
+        <p>DB path resolution priority:</p>
+        <ol>
+          <li><code>--db &lt;path&gt;</code></li>
+          <li><code>DICTCLI_DB_PATH</code></li>
+          <li><code>[database] path</code> in <code>config.ini</code></li>
+        </ol>
+        <p>Config file path priority:</p>
+        <ol>
+          <li><code>--config &lt;path&gt;</code></li>
+          <li><code>DICTCLI_CONFIG</code></li>
+          <li><code>./config.ini</code> in current directory</li>
+        </ol>
+      </article>
+
+      <article class="manual-card">
+        <h3>7) REST API (Full Usage)</h3>
+        <p>Start server:</p>
+        <pre><code>./bin/dictcli \
+  --db /absolute/path/to/dictionary-data/dicts \
+  --group ko-en \
+  --limit 20 \
+  --timeout 60 \
+  serve --host 127.0.0.1 --port 8080</code></pre>
+        <p>Endpoints:</p>
+        <ul>
+          <li><code>GET /healthz</code></li>
+          <li><code>GET /groups</code></li>
+          <li><code>GET /exact</code></li>
+          <li><code>GET /prefix</code></li>
+          <li><code>GET /meaning</code></li>
+        </ul>
+        <p>Common query parameters:</p>
+        <ul>
+          <li><code>group</code>: dictionary group ID (e.g. <code>ko-en</code>, <code>en-ko</code>)</li>
+          <li><code>limit</code>: max result count</li>
+          <li><code>timeout</code>: timeout in seconds</li>
+          <li><code>source_prefix</code>: <code>source_dict</code> prefix filter (e.g. <code>lingoes</code>)</li>
+        </ul>
+        <p>Required per endpoint:</p>
+        <ul>
+          <li><code>/exact</code>: <code>term</code> + <code>group</code></li>
+          <li><code>/prefix</code>: <code>term</code> + <code>group</code></li>
+          <li><code>/meaning</code>: <code>query</code> + <code>group</code></li>
+        </ul>
+        <p><code>/meaning</code> specific parameter:</p>
+        <ul>
+          <li><code>ranking=true|false</code> (default <code>false</code>)</li>
+          <li><code>false</code>: fast mode, <code>true</code>: ranked mode (slower, more precise)</li>
+        </ul>
+        <p>Request examples:</p>
+        <pre><code>curl -s "http://127.0.0.1:8080/healthz"
+curl -s "http://127.0.0.1:8080/groups"
+curl -s --get --data-urlencode "group=ko-en" --data-urlencode "term=가게" --data-urlencode "limit=3" "http://127.0.0.1:8080/exact"
+curl -s --get --data-urlencode "group=en-ko" --data-urlencode "term=dict" --data-urlencode "limit=5" "http://127.0.0.1:8080/prefix"
+curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary" --data-urlencode "limit=5" --data-urlencode "ranking=false" "http://127.0.0.1:8080/meaning"</code></pre>
+        <p>Success response example:</p>
+        <pre><code>{
+  "results": [
+    {
+      "group": "ko-en",
+      "headword": "사전",
+      "source_dict": "stardict-koreanenglish",
+      "overlap_count": 2,
+      "definition": "dictionary ...",
+      "duplicates": [
+        {
+          "source_dict": "stardict-koreanenglish",
+          "definition": "dictionary ..."
+        }
+      ]
+    }
+  ]
+}</code></pre>
+        <p>Error response example:</p>
+        <pre><code>{
+  "error": "exact requires query params: term, group"
+}</code></pre>
+        <p><code>/groups</code> response example:</p>
+        <pre><code>{
+  "groups": ["en-ko", "ko-en", "ko-ko"]
+}</code></pre>
+        <p><code>/healthz</code> response example:</p>
+        <pre><code>{
+  "status": "ok"
+}</code></pre>
+      </article>
+
+      <article class="manual-card">
+        <h3>8) MCP Server (Detailed)</h3>
+        <p>Start MCP server:</p>
+        <pre><code>./bin/dictcli \
+  --db /absolute/path/to/dictionary-data/dicts \
+  --group ko-en \
+  --limit 20 \
+  --timeout 60 \
+  mcp --name dictcli --version 0.1.0</code></pre>
+        <p>Exposed MCP tools:</p>
+        <ul>
+          <li><code>groups</code> (no args, response <code>{ "groups": [...] }</code>)</li>
+          <li><code>exact</code> (required <code>term</code>, response <code>{ "results": [...] }</code>)</li>
+          <li><code>prefix</code> (required <code>term</code>, response <code>{ "results": [...] }</code>)</li>
+          <li><code>meaning</code> (required <code>query</code>, response <code>{ "results": [...] }</code>)</li>
+        </ul>
+        <p>MCP client config example file: <code>manual/mcp_client_config.example.json</code></p>
+      </article>
+
+      <article class="manual-card">
+        <h3>9) Ubuntu systemd Service</h3>
+        <p>Added files:</p>
+        <ul>
+          <li>Service unit: <code>deploy/systemd/dictcli-api.service</code></li>
+          <li>Launcher script: <code>scripts/run_dictcli_api.sh</code></li>
+        </ul>
+        <p>1) Deployment path example:</p>
+        <pre><code>sudo mkdir -p /opt/dictcli/bin /opt/dictcli/scripts
+sudo cp ./bin/dictcli /opt/dictcli/bin/dictcli
+sudo cp ./scripts/run_dictcli_api.sh /opt/dictcli/scripts/run_dictcli_api.sh
+sudo chmod +x /opt/dictcli/scripts/run_dictcli_api.sh</code></pre>
+        <p>2) Service user example:</p>
+        <pre><code>sudo useradd --system --no-create-home --shell /usr/sbin/nologin dictcli || true
+sudo chown -R dictcli:dictcli /opt/dictcli</code></pre>
+        <p>3) Create environment file <code>/etc/default/dictcli</code>:</p>
+        <pre><code>DICTCLI_BIN=/opt/dictcli/bin/dictcli
+DICTCLI_DB_PATH=/home/keith/workspace/dictionary/dictionary-data/dicts
+DICTCLI_HOST=127.0.0.1
+DICTCLI_PORT=8080
+DICTCLI_GROUP=ko-en
+DICTCLI_LIMIT=20
+DICTCLI_TIMEOUT=60
+# DICTCLI_SOURCE_PREFIX=lingoes</code></pre>
+        <p>4) Register and start service:</p>
+        <pre><code>sudo cp ./deploy/systemd/dictcli-api.service /etc/systemd/system/dictcli-api.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now dictcli-api
+sudo systemctl status dictcli-api</code></pre>
+      </article>
+    </section>
+
+    <section class="cta">
+      <p>
+        This page provides the complete <code>dict-cli</code> manual for CLI usage,
+        REST API serving, MCP integration, and service operation.
+      </p>
+      <div class="download-box">
+        <strong>Download</strong><br />
+        Replace this placeholder once release artifacts are available.<br />
+        <a href="#" onclick="return false;">Download latest dict-cli binary (coming soon)</a>
+      </div>
+    </section>
+
+    <section class="brand-footer" aria-label="copyright">
+      <hr />
+      <img src="images/runable-thankyou-midsize.webp" alt="Runnable.app thank you artwork" />
+      <p>
+        © 2026 <a href="https://runable.app" target="_blank" rel="noopener noreferrer">Runnable.app</a>.
+        All rights reserved.
+      </p>
+    </section>
+  </div>
+</body>
+</html>

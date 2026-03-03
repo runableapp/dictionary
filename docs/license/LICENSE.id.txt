@@ -1,0 +1,26 @@
+Lisensi Donationware dan Pemberitahuan Hak Cipta
+Hak Cipta © 2026 Runable.app. Seluruh hak dilindungi.
+
+Perangkat lunak ini didistribusikan sebagai Donationware. Ini bukan domain publik dan bukan sumber terbuka.
+
+1. Pemberian Lisensi
+Izin dengan ini diberikan kepada siapa pun yang memperoleh salinan perangkat lunak ini untuk menggunakannya untuk tujuan pribadi maupun komersial, tanpa batas waktu, tanpa biaya.
+
+2. Dukungan Proyek
+Walaupun perangkat lunak ini gratis untuk digunakan, pengembangan dan pemeliharaan berkelanjutannya bergantung pada kemurahan hati para penggunanya. Jika Anda merasa alat kamus ini bermanfaat, mohon pertimbangkan untuk berdonasi. Dukungan Anda membantu menjaga proyek ini tetap hidup dan bebas iklan.
+
+Donasi di sini: https://buy.polar.sh/polar_cl_mla4zKoMsHFpJY23MlIRhZJyDu2sPYSYSvXSn4O0iTm
+
+3. Distribusi
+Izin diberikan untuk menyalin dan mendistribusikan ulang perangkat lunak ini, dengan syarat perangkat lunak hanya didistribusikan dalam bentuk aslinya yang tidak dimodifikasi, termasuk pemberitahuan lisensi ini, dan tidak dikenakan biaya distribusi.
+
+4. Pembatasan
+Modifikasi, rekayasa balik, dekompilasi, atau pendistribusian ulang versi yang dimodifikasi dilarang keras tanpa izin tertulis sebelumnya dari pemegang hak cipta.
+
+5. Penafian Jaminan
+Perangkat lunak ini disediakan "apa adanya", tanpa jaminan apa pun, tersurat maupun tersirat, termasuk namun tidak terbatas pada jaminan kelayakan jual, kesesuaian untuk tujuan tertentu, dan tidak melanggar hak pihak lain.
+
+6. Batasan Tanggung Jawab
+Dalam keadaan apa pun pemegang hak cipta tidak bertanggung jawab atas klaim, kerugian, atau tanggung jawab lainnya, baik dalam tindakan kontrak, perbuatan melawan hukum, maupun lainnya, yang timbul dari, keluar dari, atau sehubungan dengan perangkat lunak atau penggunaan maupun aktivitas lain terkait perangkat lunak.
+
+Pemberitahuan hak cipta ini berlaku di seluruh dunia.

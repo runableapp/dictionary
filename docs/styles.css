@@ -47,7 +47,10 @@ html, body {
   font-size: clamp(2.1rem, 4.8vw, 3.4rem);
   line-height: 1.2;
   letter-spacing: 0.02em;
-  color: #1f3f74;
+  color: #f2e4bf;
+  text-shadow:
+    0 1px 0 rgba(9, 15, 30, 0.95),
+    0 6px 14px rgba(6, 10, 22, 0.65);
 }
 
 .top-hangul-subtitle {
@@ -56,7 +59,8 @@ html, body {
   font-family: "Song Myung", "Nanum Myeongjo", "Noto Serif KR", serif;
   font-size: clamp(1rem, 2.1vw, 1.35rem);
   line-height: 1.25;
-  color: #3b5f92;
+  color: #4f6388;
+  text-shadow: 0 3px 10px rgba(6, 10, 22, 0.52);
 }
 
 .title-pattern-band {
@@ -72,17 +76,16 @@ html, body {
 }
 
 .language-switch {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
+  flex-wrap: wrap;
 }
 
 .language-switch .contact-links {
   display: flex;
-  grid-column: 1;
-  justify-self: start;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -90,15 +93,13 @@ html, body {
 .language-switch .lang-links {
   display: flex;
   gap: 10px;
-  grid-column: 3;
-  justify-self: end;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  flex-wrap: wrap;
+  white-space: normal;
 }
 
 .lang-picker {
-  grid-column: 2;
-  justify-self: center;
+  grid-column: auto;
+  justify-self: auto;
   margin-left: 0;
   display: inline-flex;
   align-items: center;
@@ -659,7 +660,7 @@ h1 {
 
 .issue-top-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
@@ -685,7 +686,7 @@ h1 {
 .issue-top-nav .lang-links {
   display: flex;
   gap: 10px;
-  margin-left: auto;
+  margin-left: 0;
   flex-wrap: nowrap;
   white-space: nowrap;
 }

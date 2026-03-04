@@ -20,31 +20,6 @@
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
   <style>
-    .top-links {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .top-links a {
-      text-decoration: none;
-      font-size: 0.92rem;
-      color: #fff2cd;
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      background: rgba(255, 255, 255, 0.09);
-      padding: 7px 11px;
-      border-radius: 999px;
-      transition: transform 120ms ease, background-color 120ms ease;
-    }
-
-    .top-links a:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.16);
-    }
-
     .manual-grid {
       display: block;
       margin-top: 16px;
@@ -112,7 +87,7 @@
 </head>
 <body>
   <div class="page">
-    <nav class="top-links" aria-label="페이지 이동">
+    <nav class="issue-top-nav" aria-label="페이지 상단 메뉴">
       <a href="index.html" data-page-link="index">← 메인 페이지로 돌아가기</a>
       <a href="#" onclick="return false;">dict-cli 다운로드 (준비 중)</a>
       <div class="lang-picker">
@@ -129,11 +104,13 @@
         </select>
       </div>
     </nav>
-    <div class="title-pattern-band" aria-hidden="true"></div>
-    <p class="top-hangul-title">한글사전</p>
 
-    <header class="hero">
+    <header class="hero no-scan hunmin-bg tagline-compact">
       <div class="hero-inner">
+        <div class="title-pattern-band" aria-hidden="true"></div>
+        <p class="top-hangul-title">한글사전</p>
+        <p class="top-hangul-subtitle">CLI 매뉴얼</p>
+        <img class="hero-top-image" src="images/hangul-dictionary-tp.webp" alt="한글 사전 배너 이미지" />
         <p class="eyebrow">CLI 매뉴얼</p>
         <h1>
           <code>dict-cli</code>

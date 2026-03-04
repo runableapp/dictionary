@@ -34,6 +34,74 @@
     });
   };
 
+  const initFloatingPolarCheckout = () => {
+    const checkoutHref =
+      "https://buy.polar.sh/polar_cl_mla4zKoMsHFpJY23MlIRhZJyDu2sPYSYSvXSn4O0iTm";
+    const lang = (document.documentElement.getAttribute("lang") || "en").toLowerCase();
+    const localizedLabel = {
+      ko: "💝 후원하기",
+      en: "💝 Support",
+      ja: "💝 支援する",
+      zh: "💝 赞助",
+      id: "💝 Dukung",
+      es: "💝 Apoyar",
+      eo: "💝 Subteni",
+    };
+    const buttonText = localizedLabel[lang] || localizedLabel.en;
+
+    if (!document.querySelector(".floating-polar-btn")) {
+      const button = document.createElement("a");
+      button.className = "floating-polar-btn";
+      button.href = checkoutHref;
+      button.textContent = buttonText;
+      button.setAttribute("aria-label", buttonText);
+      button.setAttribute("data-polar-checkout", "");
+      button.setAttribute("data-polar-checkout-theme", "dark");
+      document.body.appendChild(button);
+    }
+
+    const initPolarEmbedBindings = () => {
+      const embed = window.Polar && window.Polar.EmbedCheckout;
+      if (!embed || typeof embed.init !== "function") {
+        return false;
+      }
+      embed.init();
+      return true;
+    };
+
+    let script = document.querySelector('script[data-polar-checkout-embed="true"]');
+    if (!script) {
+      script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js";
+      script.defer = true;
+      script.setAttribute("data-auto-init", "");
+      script.setAttribute("data-polar-checkout-embed", "true");
+      script.addEventListener(
+        "load",
+        () => {
+          if (!initPolarEmbedBindings()) {
+            console.warn("Polar checkout embed failed to initialize.");
+          }
+        },
+        { once: true },
+      );
+      document.head.appendChild(script);
+      return;
+    }
+
+    if (!initPolarEmbedBindings()) {
+      script.addEventListener(
+        "load",
+        () => {
+          if (!initPolarEmbedBindings()) {
+            console.warn("Polar checkout embed failed to initialize.");
+          }
+        },
+        { once: true },
+      );
+    }
+  };
+
   const initDonateCelebration = () => {
     const donateLinks = Array.from(document.querySelectorAll(".donation-cta a[href]"));
     if (!donateLinks.length) return;
@@ -99,6 +167,7 @@
     });
   };
 
+  initFloatingPolarCheckout();
   initDesktopScreenshotSlider();
   initDonateCelebration();
 

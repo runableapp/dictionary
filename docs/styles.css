@@ -72,8 +72,8 @@ html, body {
 }
 
 .language-switch {
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
@@ -81,6 +81,8 @@ html, body {
 
 .language-switch .contact-links {
   display: flex;
+  grid-column: 1;
+  justify-self: start;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -88,13 +90,16 @@ html, body {
 .language-switch .lang-links {
   display: flex;
   gap: 10px;
-  margin-left: auto;
+  grid-column: 3;
+  justify-self: end;
   flex-wrap: nowrap;
   white-space: nowrap;
 }
 
 .lang-picker {
-  margin-left: auto;
+  grid-column: 2;
+  justify-self: center;
+  margin-left: 0;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -511,8 +516,47 @@ h1 {
 }
 
 .donation-cta {
-  margin-top: 30px;
+  margin-top: 64px;
+  margin-bottom: 44px;
   text-align: center;
+}
+
+.donation-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(468px, 92vw);
+  padding: 48px 24px;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.floating-polar-btn {
+  position: fixed;
+  right: 18px;
+  top: 18px;
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 138px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.96rem;
+  color: #1f457f;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(35, 75, 135, 0.25);
+  background: #edf4ff;
+  box-shadow: 0 8px 22px rgba(8, 20, 40, 0.26);
+  transition: none;
+}
+
+.floating-polar-btn:hover,
+.floating-polar-btn:focus-visible {
+  color: #1f457f;
+  background: #edf4ff;
+  transform: none;
 }
 
 .doc-link a {

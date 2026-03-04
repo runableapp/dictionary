@@ -46,10 +46,9 @@
     }
 
     .manual-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
+      display: block;
       margin-top: 16px;
+      width: 100%;
     }
 
     .manual-card {
@@ -59,6 +58,8 @@
       padding: 20px;
       box-shadow: var(--shadow);
       color: #1d3152;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .manual-card h3 {
@@ -162,58 +163,34 @@
           <li>검색 명령: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li>
           <li>실행 모드: 로컬 CLI / HTTP REST API / MCP(stdio)</li>
         </ul>
-      </article>
 
-      <article class="manual-card">
         <h3>2) 요구 사항</h3>
         <ul>
-          <li>Go <code>1.25+</code></li>
-          <li>사전 DB 경로(별도 생성 필요)</li>
+          <li><code>dict-cli</code> 실행 파일</li>
+          <li>사전 DB 경로(로컬 조회 기능 사용 시 필요)</li>
           <li>단일 통합 DB 파일: <code>/path/to/dictionary_fts5.db</code></li>
           <li>또는 개별 DB 디렉터리: <code>/path/to/dicts</code></li>
         </ul>
-      </article>
 
-      <article class="manual-card">
-        <h3>3) 빌드 (Taskfile 사용, 정적 링크)</h3>
-        <p><code>dictionary-cli-app</code> 디렉터리에서 실행합니다.</p>
-        <pre><code>./build.sh</code></pre>
-        <p><code>build.sh</code>는 Taskfile의 <code>build</code> 작업을 호출합니다.</p>
-        <pre><code>task build</code></pre>
-        <p>빌드 명령(정적 링크):</p>
-        <pre><code>CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o bin/dictcli ./cmd/dictcli</code></pre>
-        <p>선택 검증(리눅스):</p>
-        <pre><code>ldd ./bin/dictcli</code></pre>
-        <p>출력에 <code>not a dynamic executable</code>가 보이면 정적 링크입니다.</p>
-      </article>
-
-      <article class="manual-card">
-        <h3>4) 테스트</h3>
-        <p><code>dictionary-data/dicts</code> DB들로 CLI 동작을 검증합니다.</p>
-        <pre><code>./test.sh</code></pre>
-        <p><code>test.sh</code> 수행 내용:</p>
-        <ul>
-          <li><code>scripts/demo_cli_usage.sh</code> 스모크 테스트</li>
-          <li><code>dicts/*.db</code> 전체에 대해 <code>groups</code> sanity check</li>
-        </ul>
-      </article>
-
-      <article class="manual-card">
-        <h3>5) 실행 예시 (CLI)</h3>
+        <h3>3) 실행 예시 (CLI)</h3>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group en-ko prefix --term dict
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en meaning --query dictionary</code></pre>
+        <p>릴리스 사전 목록 조회/다운로드:</p>
+        <pre><code>./bin/dictcli download --list
+./bin/dictcli remote-list
+./bin/dictcli download --name lingoes-naver-english-korean --out /absolute/path/to/dictionary-data/dicts
+./bin/dictcli download --name cc-kedict.zip --out ./downloads --extract=false</code></pre>
+        <p><code>download</code> 명령은 다운로드 중 진행률 바(퍼센트/전송량/속도)를 표시합니다.</p>
         <p>출력 모드:</p>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output rich
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output plain
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output md
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output json
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output xml</code></pre>
-      </article>
 
-      <article class="manual-card">
-        <h3>6) 설정</h3>
+        <h3>4) 설정</h3>
         <p><code>config.ini</code>는 선택 사항이며 <code>config.example.ini</code>를 참고합니다.</p>
         <p>DB 경로 우선순위:</p>
         <ol>
@@ -227,10 +204,8 @@
           <li><code>DICTCLI_CONFIG</code></li>
           <li>현재 경로의 <code>./config.ini</code></li>
         </ol>
-      </article>
 
-      <article class="manual-card">
-        <h3>7) REST API (전체 사용법)</h3>
+        <h3>5) REST API (전체 사용법)</h3>
         <p>서버 실행:</p>
         <pre><code>./bin/dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
@@ -300,10 +275,8 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
         <pre><code>{
   "status": "ok"
 }</code></pre>
-      </article>
 
-      <article class="manual-card">
-        <h3>8) MCP 서버 (상세)</h3>
+        <h3>6) MCP 서버 (상세)</h3>
         <p>실행:</p>
         <pre><code>./bin/dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
@@ -319,10 +292,8 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
           <li><code>meaning</code> (필수 <code>query</code>, 응답 <code>{ "results": [...] }</code>)</li>
         </ul>
         <p>MCP 클라이언트 설정 예시 파일: <code>manual/mcp_client_config.example.json</code></p>
-      </article>
 
-      <article class="manual-card">
-        <h3>9) Ubuntu systemd 서비스</h3>
+        <h3>7) Ubuntu systemd 서비스</h3>
         <p>추가된 파일:</p>
         <ul>
           <li>서비스 유닛: <code>deploy/systemd/dictcli-api.service</code></li>
@@ -338,7 +309,7 @@ sudo chmod +x /opt/dictcli/scripts/run_dictcli_api.sh</code></pre>
 sudo chown -R dictcli:dictcli /opt/dictcli</code></pre>
         <p>3) 환경 파일 <code>/etc/default/dictcli</code> 생성:</p>
         <pre><code>DICTCLI_BIN=/opt/dictcli/bin/dictcli
-DICTCLI_DB_PATH=/home/keith/workspace/dictionary/dictionary-data/dicts
+DICTCLI_DB_PATH=/absolute/path/to/dictionary-data/dicts
 DICTCLI_HOST=127.0.0.1
 DICTCLI_PORT=8080
 DICTCLI_GROUP=ko-en
@@ -351,18 +322,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now dictcli-api
 sudo systemctl status dictcli-api</code></pre>
       </article>
-    </section>
-
-    <section class="cta">
-      <p>
-        이 페이지는 <code>dict-cli</code>의 한국어 전체 매뉴얼입니다. CLI 사용, REST API 제공,
-        MCP 연동, 시스템 서비스 운영까지 한 흐름으로 참고할 수 있습니다.
-      </p>
-      <div class="download-box">
-        <strong>다운로드</strong><br />
-        실제 배포 파일 링크가 준비되면 아래 링크를 교체하세요.<br />
-        <a href="#" onclick="return false;">dict-cli 최신 바이너리 다운로드 (준비 중)</a>
-      </div>
     </section>
 
     <section class="brand-footer" aria-label="copyright">

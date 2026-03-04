@@ -22,8 +22,8 @@
   <style>
     .top-links { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
     .top-links a { text-decoration:none; font-size:.92rem; color:#fff2cd; border:1px solid rgba(255,255,255,.34); background:rgba(255,255,255,.09); padding:7px 11px; border-radius:999px; }
-    .manual-grid { display:grid; grid-template-columns:1fr; gap:18px; margin-top:16px; }
-    .manual-card { border:1px solid var(--line); background:#fcf8f5; border-radius:16px; padding:20px; box-shadow:var(--shadow); color:#1d3152; }
+    .manual-grid { display:block; margin-top:16px; width:100%; }
+    .manual-card { border:1px solid var(--line); background:#fcf8f5; border-radius:16px; padding:20px; box-shadow:var(--shadow); color:#1d3152; width:100%; box-sizing:border-box; }
     .manual-card h3 { margin:0 0 10px; font-size:1.2rem; color:#1f3f74; }
     .manual-card p,.manual-card li { color:#324a6e; line-height:1.6; }
     .manual-card ul,.manual-card ol { margin:8px 0 0; padding-left:20px; }
@@ -52,20 +52,9 @@
     </div></header>
     <p class="letters">D I C T - C L I &nbsp; M A N U A L</p>
     <section class="manual-grid">
-      <article class="manual-card"><h3>1) Trajtoj</h3><ul><li>SQLite-baza serĉado</li><li>Komandoj: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li><li>Reĝimoj: CLI / REST API / MCP</li></ul></article>
-      <article class="manual-card"><h3>2) Postuloj</h3><ul><li>Go <code>1.25+</code></li><li>Vortara DB-vojo</li><li><code>/path/to/dictionary_fts5.db</code> aŭ <code>/path/to/dicts</code></li></ul></article>
-      <article class="manual-card"><h3>3) Konstruo</h3><pre><code>./build.sh
-task build
-CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o bin/dictcli ./cmd/dictcli</code></pre></article>
-      <article class="manual-card"><h3>4) Testo</h3><pre><code>./test.sh</code></pre></article>
-      <article class="manual-card"><h3>5) CLI ekzemploj</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전</code></pre></article>
-      <article class="manual-card"><h3>6) Agordo</h3><ol><li><code>--db</code></li><li><code>DICTCLI_DB_PATH</code></li><li><code>config.ini</code></li></ol></article>
-      <article class="manual-card"><h3>7) REST API</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 serve --host 127.0.0.1 --port 8080</code></pre></article>
-      <article class="manual-card"><h3>8) MCP</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre></article>
-      <article class="manual-card"><h3>9) Ubuntu systemd-servo</h3><p>Unuo: <code>deploy/systemd/dictcli-api.service</code>, skripto: <code>scripts/run_dictcli_api.sh</code></p></article>
+      <article class="manual-card"><h3>1) Trajtoj</h3><ul><li>SQLite-baza serĉado</li><li>Komandoj: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li><li>Reĝimoj: CLI / REST API / MCP</li></ul><h3>2) Postuloj</h3><ul><li>Go <code>1.25+</code></li><li>Vortara DB-vojo</li><li><code>/path/to/dictionary_fts5.db</code> aŭ <code>/path/to/dicts</code></li></ul><h3>3) CLI ekzemploj</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전</code></pre><h3>4) Agordo</h3><ol><li><code>--db</code></li><li><code>DICTCLI_DB_PATH</code></li><li><code>config.ini</code></li></ol><h3>5) REST API</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 serve --host 127.0.0.1 --port 8080</code></pre><h3>6) MCP</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre><h3>7) Ubuntu systemd-servo</h3><p>Unuo: <code>deploy/systemd/dictcli-api.service</code>, skripto: <code>scripts/run_dictcli_api.sh</code></p></article>
     </section>
-    <section class="cta"><p>Ĉi tiu paĝo estas la kompleta Esperanto-manlibro por <code>dict-cli</code>.</p><div class="download-box"><strong>Elŝuto</strong><br /><a href="#" onclick="return false;">Elŝuti la plej novan dict-cli binaron (baldaŭ)</a></div></section>
     <section class="brand-footer" aria-label="copyright"><hr /><img src="images/runable-thankyou-midsize.webp" alt="Runnable.app thank you artwork" /><p>© 2026 <a href="https://runable.app" target="_blank" rel="noopener noreferrer">Runnable.app</a>. All rights reserved.</p></section>
   </div>
 </body>

@@ -23,8 +23,8 @@
     .top-links { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
     .top-links a { text-decoration: none; font-size: 0.92rem; color: #fff2cd; border: 1px solid rgba(255, 255, 255, 0.34); background: rgba(255, 255, 255, 0.09); padding: 7px 11px; border-radius: 999px; transition: transform 120ms ease, background-color 120ms ease; }
     .top-links a:hover { transform: translateY(-1px); background: rgba(255, 255, 255, 0.16); }
-    .manual-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 16px; }
-    .manual-card { border: 1px solid var(--line); background: #fcf8f5; border-radius: 16px; padding: 20px; box-shadow: var(--shadow); color: #1d3152; }
+    .manual-grid { display: block; margin-top: 16px; width: 100%; }
+    .manual-card { border: 1px solid var(--line); background: #fcf8f5; border-radius: 16px; padding: 20px; box-shadow: var(--shadow); color: #1d3152; width: 100%; box-sizing: border-box; }
     .manual-card h3 { margin: 0 0 10px; font-size: 1.2rem; color: #1f3f74; }
     .manual-card p, .manual-card li { color: #324a6e; line-height: 1.6; }
     .manual-card ul, .manual-card ol { margin: 8px 0 0; padding-left: 20px; }
@@ -84,8 +84,7 @@
           <li>検索コマンド: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li>
           <li>実行モード: ローカル CLI / HTTP REST API / MCP(stdio)</li>
         </ul>
-      </article>
-      <article class="manual-card">
+
         <h3>2) 必要条件</h3>
         <ul>
           <li>Go <code>1.25+</code></li>
@@ -93,59 +92,34 @@
           <li>統合 DB: <code>/path/to/dictionary_fts5.db</code></li>
           <li>または DB ディレクトリ: <code>/path/to/dicts</code></li>
         </ul>
-      </article>
-      <article class="manual-card">
-        <h3>3) ビルド（Taskfile）</h3>
-        <pre><code>./build.sh
-task build
-CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o bin/dictcli ./cmd/dictcli</code></pre>
-      </article>
-      <article class="manual-card">
-        <h3>4) テスト</h3>
-        <pre><code>./test.sh</code></pre>
-        <p>スモークテストと <code>dicts/*.db</code> 全体の sanity check を実行します。</p>
-      </article>
-      <article class="manual-card">
-        <h3>5) CLI 実行例</h3>
+
+        <h3>3) CLI 実行例</h3>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group en-ko prefix --term dict
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en meaning --query dictionary</code></pre>
-      </article>
-      <article class="manual-card">
-        <h3>6) 設定</h3>
+
+        <h3>4) 設定</h3>
         <ol>
           <li><code>--db &lt;path&gt;</code></li>
           <li><code>DICTCLI_DB_PATH</code></li>
           <li><code>config.ini</code> の <code>[database] path</code></li>
         </ol>
-      </article>
-      <article class="manual-card">
-        <h3>7) REST API</h3>
+
+        <h3>5) REST API</h3>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 serve --host 127.0.0.1 --port 8080</code></pre>
         <ul>
           <li><code>GET /healthz</code>, <code>/groups</code>, <code>/exact</code>, <code>/prefix</code>, <code>/meaning</code></li>
         </ul>
-      </article>
-      <article class="manual-card">
-        <h3>8) MCP サーバー</h3>
+
+        <h3>6) MCP サーバー</h3>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre>
         <p>公開ツール: <code>groups</code>, <code>exact</code>, <code>prefix</code>, <code>meaning</code></p>
-      </article>
-      <article class="manual-card">
-        <h3>9) Ubuntu systemd サービス</h3>
+
+        <h3>7) Ubuntu systemd サービス</h3>
         <p>サービスユニット: <code>deploy/systemd/dictcli-api.service</code></p>
         <p>起動スクリプト: <code>scripts/run_dictcli_api.sh</code></p>
       </article>
-    </section>
-
-    <section class="cta">
-      <p>このページは <code>dict-cli</code> の日本語マニュアルです。</p>
-      <div class="download-box">
-        <strong>ダウンロード</strong><br />
-        配布ファイルの準備後、下記リンクを置き換えてください。<br />
-        <a href="#" onclick="return false;">最新 dict-cli バイナリをダウンロード（準備中）</a>
-      </div>
     </section>
 
     <section class="brand-footer" aria-label="copyright">

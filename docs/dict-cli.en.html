@@ -46,10 +46,9 @@
     }
 
     .manual-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
+      display: block;
       margin-top: 16px;
+      width: 100%;
     }
 
     .manual-card {
@@ -59,6 +58,8 @@
       padding: 20px;
       box-shadow: var(--shadow);
       color: #1d3152;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .manual-card h3 {
@@ -162,9 +163,7 @@
           <li>Search commands: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li>
           <li>Runtime modes: local CLI / HTTP REST API / MCP (stdio)</li>
         </ul>
-      </article>
 
-      <article class="manual-card">
         <h3>2) Requirements</h3>
         <ul>
           <li>Go <code>1.25+</code></li>
@@ -172,48 +171,26 @@
           <li>Unified DB file: <code>/path/to/dictionary_fts5.db</code></li>
           <li>Or per-dictionary DB directory: <code>/path/to/dicts</code></li>
         </ul>
-      </article>
 
-      <article class="manual-card">
-        <h3>3) Build (Taskfile, static linking)</h3>
-        <p>From the <code>dictionary-cli-app</code> directory:</p>
-        <pre><code>./build.sh</code></pre>
-        <p><code>build.sh</code> invokes the Taskfile <code>build</code> target:</p>
-        <pre><code>task build</code></pre>
-        <p>Build command (static-link friendly):</p>
-        <pre><code>CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o bin/dictcli ./cmd/dictcli</code></pre>
-        <p>Optional check on Linux:</p>
-        <pre><code>ldd ./bin/dictcli</code></pre>
-        <p>If output includes <code>not a dynamic executable</code>, it is statically linked.</p>
-      </article>
-
-      <article class="manual-card">
-        <h3>4) Test</h3>
-        <p>Validate CLI behavior against DB files under <code>dictionary-data/dicts</code>:</p>
-        <pre><code>./test.sh</code></pre>
-        <p><code>test.sh</code> runs:</p>
-        <ul>
-          <li>smoke test via <code>scripts/demo_cli_usage.sh</code></li>
-          <li>sanity checks for every <code>dicts/*.db</code> using <code>groups</code></li>
-        </ul>
-      </article>
-
-      <article class="manual-card">
-        <h3>5) CLI Run Examples</h3>
+        <h3>3) CLI Run Examples</h3>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group en-ko prefix --term dict
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en meaning --query dictionary</code></pre>
+        <p>Release dictionary list/download:</p>
+        <pre><code>./bin/dictcli download --list
+./bin/dictcli remote-list
+./bin/dictcli download --name lingoes-naver-english-korean --out /absolute/path/to/dictionary-data/dicts
+./bin/dictcli download --name cc-kedict.zip --out ./downloads --extract=false</code></pre>
+        <p>The <code>download</code> command shows a live progress bar (percent/transferred bytes/speed) while downloading.</p>
         <p>Output modes:</p>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output rich
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output plain
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output md
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output json
 ./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output xml</code></pre>
-      </article>
 
-      <article class="manual-card">
-        <h3>6) Configuration</h3>
+        <h3>4) Configuration</h3>
         <p>The config file is optional (see <code>config.example.ini</code>).</p>
         <p>DB path resolution priority:</p>
         <ol>
@@ -227,10 +204,8 @@
           <li><code>DICTCLI_CONFIG</code></li>
           <li><code>./config.ini</code> in current directory</li>
         </ol>
-      </article>
 
-      <article class="manual-card">
-        <h3>7) REST API (Full Usage)</h3>
+        <h3>5) REST API (Full Usage)</h3>
         <p>Start server:</p>
         <pre><code>./bin/dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
@@ -300,10 +275,8 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
         <pre><code>{
   "status": "ok"
 }</code></pre>
-      </article>
 
-      <article class="manual-card">
-        <h3>8) MCP Server (Detailed)</h3>
+        <h3>6) MCP Server (Detailed)</h3>
         <p>Start MCP server:</p>
         <pre><code>./bin/dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
@@ -319,10 +292,8 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
           <li><code>meaning</code> (required <code>query</code>, response <code>{ "results": [...] }</code>)</li>
         </ul>
         <p>MCP client config example file: <code>manual/mcp_client_config.example.json</code></p>
-      </article>
 
-      <article class="manual-card">
-        <h3>9) Ubuntu systemd Service</h3>
+        <h3>7) Ubuntu systemd Service</h3>
         <p>Added files:</p>
         <ul>
           <li>Service unit: <code>deploy/systemd/dictcli-api.service</code></li>
@@ -338,7 +309,7 @@ sudo chmod +x /opt/dictcli/scripts/run_dictcli_api.sh</code></pre>
 sudo chown -R dictcli:dictcli /opt/dictcli</code></pre>
         <p>3) Create environment file <code>/etc/default/dictcli</code>:</p>
         <pre><code>DICTCLI_BIN=/opt/dictcli/bin/dictcli
-DICTCLI_DB_PATH=/home/keith/workspace/dictionary/dictionary-data/dicts
+DICTCLI_DB_PATH=/absolute/path/to/dictionary-data/dicts
 DICTCLI_HOST=127.0.0.1
 DICTCLI_PORT=8080
 DICTCLI_GROUP=ko-en
@@ -351,18 +322,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now dictcli-api
 sudo systemctl status dictcli-api</code></pre>
       </article>
-    </section>
-
-    <section class="cta">
-      <p>
-        This page provides the complete <code>dict-cli</code> manual for CLI usage,
-        REST API serving, MCP integration, and service operation.
-      </p>
-      <div class="download-box">
-        <strong>Download</strong><br />
-        Replace this placeholder once release artifacts are available.<br />
-        <a href="#" onclick="return false;">Download latest dict-cli binary (coming soon)</a>
-      </div>
     </section>
 
     <section class="brand-footer" aria-label="copyright">

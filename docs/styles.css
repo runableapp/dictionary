@@ -322,12 +322,34 @@ h1 {
 
 .hero-download-title {
   margin: 22px 0 10px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  justify-content: center;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #2e4d79;
+}
+
+.hero-os-support {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-os-support-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.hero-os-support-text {
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 
 .hero-download-links {
@@ -371,10 +393,40 @@ h1 {
   color: #cfe2ff;
 }
 
+.section-title.section-title-os {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title-os-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.download-combined-card .section-title {
+  color: #234b87;
+}
+
+.download-combined-card > .section-title:not(:first-of-type) {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid #d8e4f3;
+}
+
+.download-combined-card .doc-link {
+  margin: 16px 0 0;
+}
+
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
+}
+
+.download-products {
+  margin-top: 22px;
 }
 
 .card {

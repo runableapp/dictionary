@@ -159,7 +159,7 @@
         </h1>
         <p class="subtitle">
           An offline SQLite dictionary CLI with two optional runtime modes:
-          REST API server (<code>serve</code>) and MCP stdio server (<code>mcp</code>).
+          REST API server (<code>rest</code>) and MCP stdio server (<code>mcp</code>).
           This page provides full usage guidance in one place.
         </p>
         <ul class="hero-badges">
@@ -178,7 +178,7 @@
         <h3>1) Features</h3>
         <ul>
           <li>SQLite DB file/directory based dictionary queries</li>
-          <li>Search commands: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li>
+          <li>Search flow: default <code>--term</code>, meaning search <code>--query</code>, optional explicit <code>exact</code>/<code>meaning</code></li>
           <li>Runtime modes: local CLI / HTTP REST API / MCP (stdio)</li>
         </ul>
 
@@ -192,21 +192,25 @@
 
         <h3>3) CLI Run Examples</h3>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group en-ko prefix --term dict
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en meaning --query dictionary</code></pre>
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term dict*
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term "com*uter"
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre>
+        <p>Wildcard patterns:</p>
+        <pre><code>*  : any sequence (example: *ter, com*uter)
+?  : any single character (example: c?mputer)</code></pre>
         <p>Release dictionary list/download:</p>
         <pre><code>./bin/dictcli download --list
-./bin/dictcli remote-list
+./bin/dictcli download-list
 ./bin/dictcli download --name lingoes-naver-english-korean --out /absolute/path/to/dictionary-data/dicts
 ./bin/dictcli download --name cc-kedict.zip --out ./downloads --extract=false</code></pre>
         <p>The <code>download</code> command shows a live progress bar (percent/transferred bytes/speed) while downloading.</p>
         <p>Output modes:</p>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output rich
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output plain
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output md
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output json
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 옥편 --output xml</code></pre>
+        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output rich
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output plain
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output md
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output json
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output xml</code></pre>
 
         <h3>4) Configuration</h3>
         <p>The config file is optional (see <code>config.example.ini</code>).</p>
@@ -227,10 +231,9 @@
         <p>Start server:</p>
         <pre><code>./bin/dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
-  --group ko-en \
   --limit 20 \
   --timeout 60 \
-  serve --host 127.0.0.1 --port 8080</code></pre>
+  rest --host 127.0.0.1 --port 8080</code></pre>
         <p>Endpoints:</p>
         <ul>
           <li><code>GET /healthz</code></li>
@@ -298,7 +301,6 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
         <p>Start MCP server:</p>
         <pre><code>./bin/dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
-  --group ko-en \
   --limit 20 \
   --timeout 60 \
   mcp --name dictcli --version 0.1.0</code></pre>

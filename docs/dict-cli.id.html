@@ -49,14 +49,16 @@
     <div class="title-pattern-band" aria-hidden="true"></div><p class="top-hangul-title">Kamus Hangul</p>
     <header class="hero"><div class="hero-inner">
       <p class="eyebrow">Manual CLI</p><h1><code>dict-cli</code> <span class="hero-accent">Panduan Lengkap</span></h1>
-      <p class="subtitle">CLI kamus SQLite offline dengan mode REST API (<code>serve</code>) dan MCP stdio (<code>mcp</code>).</p>
+      <p class="subtitle">CLI kamus SQLite offline dengan mode REST API (<code>rest</code>) dan MCP stdio (<code>mcp</code>).</p>
       <ul class="hero-badges"><li>Pencarian offline</li><li>Mode REST API</li><li>Integrasi MCP</li></ul>
       <div class="signal-band" aria-hidden="true"></div>
     </div></header>
     <p class="letters">D I C T - C L I &nbsp; M A N U A L</p>
     <section class="manual-grid">
-      <article class="manual-card"><h3>1) Fitur</h3><ul><li>Query berbasis file/direktori SQLite</li><li>Perintah: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li><li>Mode: CLI / REST API / MCP</li></ul><h3>2) Kebutuhan</h3><ul><li>Go <code>1.25+</code></li><li>Path DB kamus</li><li><code>/path/to/dictionary_fts5.db</code> atau <code>/path/to/dicts</code></li></ul><h3>3) Contoh CLI</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전</code></pre><h3>4) Konfigurasi</h3><ol><li><code>--db</code></li><li><code>DICTCLI_DB_PATH</code></li><li><code>config.ini</code></li></ol><h3>5) REST API</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 serve --host 127.0.0.1 --port 8080</code></pre><h3>6) MCP</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre><h3>7) systemd Ubuntu</h3><p>Unit: <code>deploy/systemd/dictcli-api.service</code>, Script: <code>scripts/run_dictcli_api.sh</code></p></article>
+      <article class="manual-card"><h3>1) Fitur</h3><ul><li>Query berbasis file/direktori SQLite</li><li>Alur pencarian: default <code>--term</code>, pencarian makna <code>--query</code>, opsional <code>exact</code>/<code>meaning</code></li><li>Mode: CLI / REST API / MCP</li></ul><h3>2) Kebutuhan</h3><ul><li>Go <code>1.25+</code></li><li>Path DB kamus</li><li><code>/path/to/dictionary_fts5.db</code> atau <code>/path/to/dicts</code></li></ul><h3>3) Contoh CLI</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term dict*
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre><p>Wildcard: <code>*</code> (urutan bebas), <code>?</code> (1 karakter).</p><h3>4) Konfigurasi</h3><ol><li><code>--db</code></li><li><code>DICTCLI_DB_PATH</code></li><li><code>config.ini</code></li></ol><h3>5) REST API</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 rest --host 127.0.0.1 --port 8080</code></pre><h3>6) MCP</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre><h3>7) systemd Ubuntu</h3><p>Unit: <code>deploy/systemd/dictcli-api.service</code>, Script: <code>scripts/run_dictcli_api.sh</code></p></article>
     </section>
     <section class="brand-footer" aria-label="copyright"><hr /><img src="images/runable-thankyou-midsize.webp" alt="Runnable.app thank you artwork" /><p>© 2026 <a href="https://runable.app" target="_blank" rel="noopener noreferrer">Runnable.app</a>. All rights reserved.</p></section>
   </div>

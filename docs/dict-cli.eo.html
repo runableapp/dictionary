@@ -49,14 +49,16 @@
     <div class="title-pattern-band" aria-hidden="true"></div><p class="top-hangul-title">Hangula Vortaro</p>
     <header class="hero"><div class="hero-inner">
       <p class="eyebrow">CLI Manlibro</p><h1><code>dict-cli</code> <span class="hero-accent">Kompleta gvidilo</span></h1>
-      <p class="subtitle">Senreta SQLite-vortara CLI kun REST API (<code>serve</code>) kaj MCP stdio (<code>mcp</code>).</p>
+      <p class="subtitle">Senreta SQLite-vortara CLI kun REST API (<code>rest</code>) kaj MCP stdio (<code>mcp</code>).</p>
       <ul class="hero-badges"><li>Senreta serĉo</li><li>REST API reĝimo</li><li>MCP integriĝo</li></ul>
       <div class="signal-band" aria-hidden="true"></div>
     </div></header>
     <p class="letters">D I C T - C L I &nbsp; M A N U A L</p>
     <section class="manual-grid">
-      <article class="manual-card"><h3>1) Trajtoj</h3><ul><li>SQLite-baza serĉado</li><li>Komandoj: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li><li>Reĝimoj: CLI / REST API / MCP</li></ul><h3>2) Postuloj</h3><ul><li>Go <code>1.25+</code></li><li>Vortara DB-vojo</li><li><code>/path/to/dictionary_fts5.db</code> aŭ <code>/path/to/dicts</code></li></ul><h3>3) CLI ekzemploj</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전</code></pre><h3>4) Agordo</h3><ol><li><code>--db</code></li><li><code>DICTCLI_DB_PATH</code></li><li><code>config.ini</code></li></ol><h3>5) REST API</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 serve --host 127.0.0.1 --port 8080</code></pre><h3>6) MCP</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre><h3>7) Ubuntu systemd-servo</h3><p>Unuo: <code>deploy/systemd/dictcli-api.service</code>, skripto: <code>scripts/run_dictcli_api.sh</code></p></article>
+      <article class="manual-card"><h3>1) Trajtoj</h3><ul><li>SQLite-baza serĉado</li><li>Serĉfluo: defaŭlte <code>--term</code>, signifa serĉo <code>--query</code>, opcia <code>exact</code>/<code>meaning</code></li><li>Reĝimoj: CLI / REST API / MCP</li></ul><h3>2) Postuloj</h3><ul><li>Go <code>1.25+</code></li><li>Vortara DB-vojo</li><li><code>/path/to/dictionary_fts5.db</code> aŭ <code>/path/to/dicts</code></li></ul><h3>3) CLI ekzemploj</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term dict*
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre><p>Ĵokeroj: <code>*</code> (ajna sinsekvo), <code>?</code> (unu signo).</p><h3>4) Agordo</h3><ol><li><code>--db</code></li><li><code>DICTCLI_DB_PATH</code></li><li><code>config.ini</code></li></ol><h3>5) REST API</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 rest --host 127.0.0.1 --port 8080</code></pre><h3>6) MCP</h3><pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre><h3>7) Ubuntu systemd-servo</h3><p>Unuo: <code>deploy/systemd/dictcli-api.service</code>, skripto: <code>scripts/run_dictcli_api.sh</code></p></article>
     </section>
     <section class="brand-footer" aria-label="copyright"><hr /><img src="images/runable-thankyou-midsize.webp" alt="Runnable.app thank you artwork" /><p>© 2026 <a href="https://runable.app" target="_blank" rel="noopener noreferrer">Runnable.app</a>. All rights reserved.</p></section>
   </div>

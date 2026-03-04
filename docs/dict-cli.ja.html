@@ -66,7 +66,7 @@
         <h1><code>dict-cli</code> <span class="hero-accent">完全ガイド</span></h1>
         <p class="subtitle">
           オフライン SQLite 辞書 CLI です。ローカル実行に加え、REST API サーバー
-          (<code>serve</code>) と MCP stdio サーバー (<code>mcp</code>) モードを提供します。
+          (<code>rest</code>) と MCP stdio サーバー (<code>mcp</code>) モードを提供します。
         </p>
         <ul class="hero-badges">
           <li>オフライン辞書検索</li>
@@ -84,7 +84,7 @@
         <h3>1) 機能</h3>
         <ul>
           <li>SQLite DB ファイル/ディレクトリを使った辞書検索</li>
-          <li>検索コマンド: <code>exact</code>, <code>prefix</code>, <code>meaning</code></li>
+          <li>検索フロー: 既定 <code>--term</code>、意味検索 <code>--query</code>、必要に応じて <code>exact</code>/<code>meaning</code></li>
           <li>実行モード: ローカル CLI / HTTP REST API / MCP(stdio)</li>
         </ul>
 
@@ -98,9 +98,11 @@
 
         <h3>3) CLI 実行例</h3>
         <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en exact --term 사전
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group en-ko prefix --term dict
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en meaning --query dictionary</code></pre>
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term dict*
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term "com*uter"
+./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre>
+        <p>ワイルドカード: <code>*</code> は任意文字列、<code>?</code> は任意1文字。</p>
 
         <h3>4) 設定</h3>
         <ol>
@@ -110,13 +112,13 @@
         </ol>
 
         <h3>5) REST API</h3>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 serve --host 127.0.0.1 --port 8080</code></pre>
+        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 rest --host 127.0.0.1 --port 8080</code></pre>
         <ul>
           <li><code>GET /healthz</code>, <code>/groups</code>, <code>/exact</code>, <code>/prefix</code>, <code>/meaning</code></li>
         </ul>
 
         <h3>6) MCP サーバー</h3>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --group ko-en --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre>
+        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre>
         <p>公開ツール: <code>groups</code>, <code>exact</code>, <code>prefix</code>, <code>meaning</code></p>
 
         <h3>7) Ubuntu systemd サービス</h3>

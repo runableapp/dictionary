@@ -84,7 +84,7 @@
         <h3>1) 機能</h3>
         <ul>
           <li>SQLite DB ファイル/ディレクトリを使った辞書検索</li>
-          <li>検索フロー: 既定 <code>--term</code>、意味検索 <code>--query</code>、必要に応じて <code>exact</code>/<code>meaning</code></li>
+          <li>検索フロー: 既定 <code>--term</code> と意味検索 <code>--query</code></li>
           <li>実行モード: ローカル CLI / HTTP REST API / MCP(stdio)</li>
         </ul>
 
@@ -97,11 +97,11 @@
         </ul>
 
         <h3>3) CLI 実行例</h3>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term dict*
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term "com*uter"
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre>
+        <pre><code>dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 'dict*'
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 'com*uter'
+dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre>
         <p>ワイルドカード: <code>*</code> は任意文字列、<code>?</code> は任意1文字。</p>
 
         <h3>4) 設定</h3>
@@ -112,14 +112,14 @@
         </ol>
 
         <h3>5) REST API</h3>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 rest --host 127.0.0.1 --port 8080</code></pre>
+        <pre><code>dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 rest --host 127.0.0.1 --port 8080</code></pre>
         <ul>
-          <li><code>GET /healthz</code>, <code>/groups</code>, <code>/exact</code>, <code>/prefix</code>, <code>/meaning</code></li>
+          <li><code>GET /healthz</code>, <code>/groups</code>, <code>/search</code></li>
         </ul>
 
         <h3>6) MCP サーバー</h3>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 mcp --name dictcli --version 0.1.0</code></pre>
-        <p>公開ツール: <code>groups</code>, <code>exact</code>, <code>prefix</code>, <code>meaning</code></p>
+        <pre><code>dictcli --db /absolute/path/to/dictionary-data/dicts --limit 20 --timeout 60 mcp --name dictcli</code></pre>
+        <p>公開ツール: <code>groups</code>, <code>search</code></p>
 
         <h3>7) Ubuntu systemd サービス</h3>
         <p>サービスユニット: <code>deploy/systemd/dictcli-api.service</code></p>

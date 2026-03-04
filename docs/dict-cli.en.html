@@ -178,7 +178,7 @@
         <h3>1) Features</h3>
         <ul>
           <li>SQLite DB file/directory based dictionary queries</li>
-          <li>Search flow: default <code>--term</code>, meaning search <code>--query</code>, optional explicit <code>exact</code>/<code>meaning</code></li>
+          <li>Search flow: default <code>--term</code> and meaning search <code>--query</code></li>
           <li>Runtime modes: local CLI / HTTP REST API / MCP (stdio)</li>
         </ul>
 
@@ -191,26 +191,26 @@
         </ul>
 
         <h3>3) CLI Run Examples</h3>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term dict*
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term "com*uter"
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre>
+        <pre><code>dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 'dict*'
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 'com*uter'
+dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre>
         <p>Wildcard patterns:</p>
-        <pre><code>*  : any sequence (example: *ter, com*uter)
+        <pre><code>*  : any sequence (example: '*ter', 'com*uter')
 ?  : any single character (example: c?mputer)</code></pre>
         <p>Release dictionary list/download:</p>
-        <pre><code>./bin/dictcli download --list
-./bin/dictcli download-list
-./bin/dictcli download --name lingoes-naver-english-korean --out /absolute/path/to/dictionary-data/dicts
-./bin/dictcli download --name cc-kedict.zip --out ./downloads --extract=false</code></pre>
+        <pre><code>dictcli download --list
+dictcli download-list
+dictcli download --name lingoes-naver-english-korean --out /absolute/path/to/dictionary-data/dicts
+dictcli download --name cc-kedict.zip --out ./downloads --extract=false</code></pre>
         <p>The <code>download</code> command shows a live progress bar (percent/transferred bytes/speed) while downloading.</p>
         <p>Output modes:</p>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output rich
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output plain
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output md
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output json
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output xml</code></pre>
+        <pre><code>dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output rich
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output plain
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output md
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output json
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output xml</code></pre>
 
         <h3>4) Configuration</h3>
         <p>The config file is optional (see <code>config.example.ini</code>).</p>
@@ -229,7 +229,7 @@
 
         <h3>5) REST API (Full Usage)</h3>
         <p>Start server:</p>
-        <pre><code>./bin/dictcli \
+        <pre><code>dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
   --limit 20 \
   --timeout 60 \
@@ -238,34 +238,31 @@
         <ul>
           <li><code>GET /healthz</code></li>
           <li><code>GET /groups</code></li>
-          <li><code>GET /exact</code></li>
-          <li><code>GET /prefix</code></li>
-          <li><code>GET /meaning</code></li>
+          <li><code>GET /search</code></li>
         </ul>
         <p>Common query parameters:</p>
         <ul>
-          <li><code>group</code>: dictionary group ID (e.g. <code>ko-en</code>, <code>en-ko</code>)</li>
           <li><code>limit</code>: max result count</li>
           <li><code>timeout</code>: timeout in seconds</li>
           <li><code>source_prefix</code>: <code>source_dict</code> prefix filter (e.g. <code>lingoes</code>)</li>
         </ul>
-        <p>Required per endpoint:</p>
+        <p><code>/search</code> parameters:</p>
         <ul>
-          <li><code>/exact</code>: <code>term</code> + <code>group</code></li>
-          <li><code>/prefix</code>: <code>term</code> + <code>group</code></li>
-          <li><code>/meaning</code>: <code>query</code> + <code>group</code></li>
+          <li>Provide exactly one of <code>term</code> or <code>query</code></li>
+          <li><code>term</code>: headword search (supports wildcard <code>*</code> and <code>?</code>)</li>
+          <li><code>query</code>: meaning/full-text FTS search</li>
         </ul>
-        <p><code>/meaning</code> specific parameter:</p>
+        <p><code>/search</code> specific parameter:</p>
         <ul>
           <li><code>ranking=true|false</code> (default <code>false</code>)</li>
-          <li><code>false</code>: fast mode, <code>true</code>: ranked mode (slower, more precise)</li>
+          <li><code>ranking</code> applies to <code>query</code> search (<code>false</code>: fast, <code>true</code>: ranked)</li>
         </ul>
         <p>Request examples:</p>
         <pre><code>curl -s "http://127.0.0.1:8080/healthz"
 curl -s "http://127.0.0.1:8080/groups"
-curl -s --get --data-urlencode "group=ko-en" --data-urlencode "term=가게" --data-urlencode "limit=3" "http://127.0.0.1:8080/exact"
-curl -s --get --data-urlencode "group=en-ko" --data-urlencode "term=dict" --data-urlencode "limit=5" "http://127.0.0.1:8080/prefix"
-curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary" --data-urlencode "limit=5" --data-urlencode "ranking=false" "http://127.0.0.1:8080/meaning"</code></pre>
+curl -s --get --data-urlencode "term=가게" --data-urlencode "limit=3" "http://127.0.0.1:8080/search"
+curl -s --get --data-urlencode "term=*ter" --data-urlencode "limit=5" "http://127.0.0.1:8080/search"
+curl -s --get --data-urlencode "query=dictionary" --data-urlencode "limit=5" --data-urlencode "ranking=false" "http://127.0.0.1:8080/search"</code></pre>
         <p>Success response example:</p>
         <pre><code>{
   "results": [
@@ -286,7 +283,7 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
 }</code></pre>
         <p>Error response example:</p>
         <pre><code>{
-  "error": "exact requires query params: term, group"
+  "error": "search requires one of query params: term, query"
 }</code></pre>
         <p><code>/groups</code> response example:</p>
         <pre><code>{
@@ -299,17 +296,15 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
 
         <h3>6) MCP Server (Detailed)</h3>
         <p>Start MCP server:</p>
-        <pre><code>./bin/dictcli \
+        <pre><code>dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
   --limit 20 \
   --timeout 60 \
-  mcp --name dictcli --version 0.1.0</code></pre>
+  mcp --name dictcli</code></pre>
         <p>Exposed MCP tools:</p>
         <ul>
           <li><code>groups</code> (no args, response <code>{ "groups": [...] }</code>)</li>
-          <li><code>exact</code> (required <code>term</code>, response <code>{ "results": [...] }</code>)</li>
-          <li><code>prefix</code> (required <code>term</code>, response <code>{ "results": [...] }</code>)</li>
-          <li><code>meaning</code> (required <code>query</code>, response <code>{ "results": [...] }</code>)</li>
+          <li><code>search</code> (required: one of <code>term</code> or <code>query</code>, response <code>{ "results": [...] }</code>)</li>
         </ul>
         <p>MCP client config example file: <code>manual/mcp_client_config.example.json</code></p>
 
@@ -321,7 +316,7 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
         </ul>
         <p>1) Deployment path example:</p>
         <pre><code>sudo mkdir -p /opt/dictcli/bin /opt/dictcli/scripts
-sudo cp ./bin/dictcli /opt/dictcli/bin/dictcli
+sudo cp dictcli /opt/dictcli/bin/dictcli
 sudo cp ./scripts/run_dictcli_api.sh /opt/dictcli/scripts/run_dictcli_api.sh
 sudo chmod +x /opt/dictcli/scripts/run_dictcli_api.sh</code></pre>
         <p>2) Service user example:</p>

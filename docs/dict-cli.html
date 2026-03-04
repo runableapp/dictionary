@@ -137,7 +137,7 @@
         <h3>1) 기능</h3>
         <ul>
           <li>SQLite DB 파일/디렉터리 기반 사전 검색</li>
-          <li>검색 방식: 기본 <code>--term</code> / 의미 검색 <code>--query</code> / 필요 시 <code>exact</code>, <code>meaning</code></li>
+          <li>검색 방식: 기본 <code>--term</code> / 의미 검색 <code>--query</code></li>
           <li>실행 모드: 로컬 CLI / HTTP REST API / MCP(stdio)</li>
         </ul>
 
@@ -150,26 +150,26 @@
         </ul>
 
         <h3>3) 실행 예시 (CLI)</h3>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term dict*
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term "com*uter"
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre>
+        <pre><code>dictcli --db /absolute/path/to/dictionary-data/dictionary_fts5.db groups
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 사전
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 'dict*'
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 'com*uter'
+dictcli --db /absolute/path/to/dictionary-data/dicts --query dictionary</code></pre>
         <p>와일드카드:</p>
-        <pre><code>*  : 임의의 문자열 (예: *ter, com*uter)
+        <pre><code>*  : 임의의 문자열 (예: '*ter', 'com*uter')
 ?  : 임의의 한 글자 (예: c?mputer)</code></pre>
         <p>릴리스 사전 목록 조회/다운로드:</p>
-        <pre><code>./bin/dictcli download --list
-./bin/dictcli download-list
-./bin/dictcli download --name lingoes-naver-english-korean --out /absolute/path/to/dictionary-data/dicts
-./bin/dictcli download --name cc-kedict.zip --out ./downloads --extract=false</code></pre>
+        <pre><code>dictcli download --list
+dictcli download-list
+dictcli download --name lingoes-naver-english-korean --out /absolute/path/to/dictionary-data/dicts
+dictcli download --name cc-kedict.zip --out ./downloads --extract=false</code></pre>
         <p><code>download</code> 명령은 다운로드 중 진행률 바(퍼센트/전송량/속도)를 표시합니다.</p>
         <p>출력 모드:</p>
-        <pre><code>./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output rich
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output plain
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output md
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output json
-./bin/dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output xml</code></pre>
+        <pre><code>dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output rich
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output plain
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output md
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output json
+dictcli --db /absolute/path/to/dictionary-data/dicts --term 옥편 --output xml</code></pre>
 
         <h3>4) 설정</h3>
         <p><code>config.ini</code>는 선택 사항이며 <code>config.example.ini</code>를 참고합니다.</p>
@@ -188,7 +188,7 @@
 
         <h3>5) REST API (전체 사용법)</h3>
         <p>서버 실행:</p>
-        <pre><code>./bin/dictcli \
+        <pre><code>dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
   --limit 20 \
   --timeout 60 \
@@ -197,34 +197,31 @@
         <ul>
           <li><code>GET /healthz</code></li>
           <li><code>GET /groups</code></li>
-          <li><code>GET /exact</code></li>
-          <li><code>GET /prefix</code></li>
-          <li><code>GET /meaning</code></li>
+          <li><code>GET /search</code></li>
         </ul>
         <p>공통 쿼리 파라미터:</p>
         <ul>
-          <li><code>group</code>: 사전 그룹 ID (예: <code>ko-en</code>, <code>en-ko</code>)</li>
           <li><code>limit</code>: 결과 개수</li>
           <li><code>timeout</code>: 초 단위 타임아웃</li>
           <li><code>source_prefix</code>: <code>source_dict</code> 접두어 필터 (예: <code>lingoes</code>)</li>
         </ul>
-        <p>명령별 필수 파라미터:</p>
+        <p><code>/search</code> 파라미터:</p>
         <ul>
-          <li><code>/exact</code>: <code>term</code> + <code>group</code></li>
-          <li><code>/prefix</code>: <code>term</code> + <code>group</code></li>
-          <li><code>/meaning</code>: <code>query</code> + <code>group</code></li>
+          <li><code>term</code> 또는 <code>query</code> 중 하나를 필수로 사용</li>
+          <li><code>term</code>: 표제어 검색 (와일드카드 <code>*</code>, <code>?</code> 지원)</li>
+          <li><code>query</code>: 의미/본문 FTS 검색</li>
         </ul>
-        <p><code>/meaning</code> 전용 파라미터:</p>
+        <p><code>/search</code> 전용 파라미터:</p>
         <ul>
           <li><code>ranking=true|false</code> (기본 <code>false</code>)</li>
-          <li><code>false</code>: fast 모드(기본), <code>true</code>: 랭킹 모드(느리지만 정밀)</li>
+          <li><code>ranking</code>은 <code>query</code> 검색에서만 사용 (<code>false</code>: fast, <code>true</code>: ranked)</li>
         </ul>
         <p>요청 예시:</p>
         <pre><code>curl -s "http://127.0.0.1:8080/healthz"
 curl -s "http://127.0.0.1:8080/groups"
-curl -s --get --data-urlencode "group=ko-en" --data-urlencode "term=가게" --data-urlencode "limit=3" "http://127.0.0.1:8080/exact"
-curl -s --get --data-urlencode "group=en-ko" --data-urlencode "term=dict" --data-urlencode "limit=5" "http://127.0.0.1:8080/prefix"
-curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary" --data-urlencode "limit=5" --data-urlencode "ranking=false" "http://127.0.0.1:8080/meaning"</code></pre>
+curl -s --get --data-urlencode "term=가게" --data-urlencode "limit=3" "http://127.0.0.1:8080/search"
+curl -s --get --data-urlencode "term=*ter" --data-urlencode "limit=5" "http://127.0.0.1:8080/search"
+curl -s --get --data-urlencode "query=dictionary" --data-urlencode "limit=5" --data-urlencode "ranking=false" "http://127.0.0.1:8080/search"</code></pre>
         <p>성공 응답 예시:</p>
         <pre><code>{
   "results": [
@@ -245,7 +242,7 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
 }</code></pre>
         <p>에러 응답 예시:</p>
         <pre><code>{
-  "error": "exact requires query params: term, group"
+  "error": "search requires one of query params: term, query"
 }</code></pre>
         <p><code>/groups</code> 응답 예시:</p>
         <pre><code>{
@@ -258,17 +255,15 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
 
         <h3>6) MCP 서버 (상세)</h3>
         <p>실행:</p>
-        <pre><code>./bin/dictcli \
+        <pre><code>dictcli \
   --db /absolute/path/to/dictionary-data/dicts \
   --limit 20 \
   --timeout 60 \
-  mcp --name dictcli --version 0.1.0</code></pre>
+  mcp --name dictcli</code></pre>
         <p>등록되는 MCP 도구:</p>
         <ul>
           <li><code>groups</code> (인자 없음, 응답 <code>{ "groups": [...] }</code>)</li>
-          <li><code>exact</code> (필수 <code>term</code>, 응답 <code>{ "results": [...] }</code>)</li>
-          <li><code>prefix</code> (필수 <code>term</code>, 응답 <code>{ "results": [...] }</code>)</li>
-          <li><code>meaning</code> (필수 <code>query</code>, 응답 <code>{ "results": [...] }</code>)</li>
+          <li><code>search</code> (필수: <code>term</code> 또는 <code>query</code>, 응답 <code>{ "results": [...] }</code>)</li>
         </ul>
         <p>MCP 클라이언트 설정 예시 파일: <code>manual/mcp_client_config.example.json</code></p>
 
@@ -280,7 +275,7 @@ curl -s --get --data-urlencode "group=ko-en" --data-urlencode "query=dictionary"
         </ul>
         <p>1) 배포 경로 예시:</p>
         <pre><code>sudo mkdir -p /opt/dictcli/bin /opt/dictcli/scripts
-sudo cp ./bin/dictcli /opt/dictcli/bin/dictcli
+sudo cp dictcli /opt/dictcli/bin/dictcli
 sudo cp ./scripts/run_dictcli_api.sh /opt/dictcli/scripts/run_dictcli_api.sh
 sudo chmod +x /opt/dictcli/scripts/run_dictcli_api.sh</code></pre>
         <p>2) 서비스 사용자 생성(예시):</p>

@@ -20,12 +20,6 @@
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
   <style>
-    .top-links { display: flex; justify-content: flex-start; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-    .top-links a { text-decoration: none; font-size: 0.92rem; color: #fff2cd; border: 1px solid rgba(255, 255, 255, 0.34); background: rgba(255, 255, 255, 0.09); padding: 7px 11px; border-radius: 999px; transition: transform 120ms ease, background-color 120ms ease; }
-    .top-links a:hover { transform: translateY(-1px); background: rgba(255, 255, 255, 0.16); }
-    .top-hangul-title { font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif; color: #1a2740; text-shadow: none; }
-    h1 { color: #1a2740; text-shadow: none; }
-    .hero-accent { background: none; color: inherit; padding: 0; border-radius: 0; }
     .manual-grid { display: block; margin-top: 16px; width: 100%; }
     .manual-card { border: 1px solid var(--line); background: #fcf8f5; border-radius: 16px; padding: 20px; box-shadow: var(--shadow); color: #1d3152; width: 100%; box-sizing: border-box; }
     .manual-card h3 { margin: 0 0 10px; font-size: 1.2rem; color: #1f3f74; }
@@ -39,7 +33,7 @@
 </head>
 <body>
   <div class="page">
-    <nav class="top-links" aria-label="ページナビゲーション">
+    <nav class="issue-top-nav" aria-label="Top page navigation">
       <a href="index.ja.html" data-page-link="index">← メインページへ戻る</a>
       <a href="#" onclick="return false;">dict-cli をダウンロード（準備中）</a>
       <div class="lang-picker">
@@ -57,11 +51,12 @@
       </div>
     </nav>
 
-    <div class="title-pattern-band" aria-hidden="true"></div>
-    <p class="top-hangul-title">ハングル辞書</p>
-
-    <header class="hero">
+    <header class="hero no-scan hunmin-bg tagline-compact">
       <div class="hero-inner">
+        <div class="title-pattern-band" aria-hidden="true"></div>
+        <p class="top-hangul-title">ハングル辞書</p>
+        <p class="top-hangul-subtitle">CLI マニュアル</p>
+        <img class="hero-top-image" src="images/hangul-dictionary-tp.webp" alt="ハングル辞書バナー画像" />
         <p class="eyebrow">CLI マニュアル</p>
         <h1><code>dict-cli</code> <span class="hero-accent">完全ガイド</span></h1>
         <p class="subtitle">

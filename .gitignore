@@ -1,6 +1,7 @@
 README.txt
 
 # Release binaries are published as GitHub Release assets, not in git history.
-/docs/files/*.AppImage
-/docs/files/*.exe
-/docs/files/*.dmg
+docs/files/*.AppImage
+docs/files/*.exe
+docs/files/*.dmg
+notes/

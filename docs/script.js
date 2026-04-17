@@ -283,7 +283,7 @@
   pageLinks.forEach((link) => {
     const pageKey = link.getAttribute("data-page-link");
     if (!pageKey || !pageFiles[pageKey]) return;
-    link.href = pageFiles[pageKey][selectedLang] || pageFiles[pageKey].en;
+    link.href = pageFiles[pageKey][currentLang] || pageFiles[pageKey].en;
   });
 
   languageSelectors.forEach((select) => {
